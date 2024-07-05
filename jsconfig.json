@@ -1,0 +1,12 @@
+{
+    "compilerOptions": {
+      "target": "es5",  // Adjust based on your project's target environment (optional)
+      "lib": ["dom", "dom.iterable", "esnext"], // Specify libraries (optional)
+      "allowJs": true,
+      "skipLibCheck": true,  // Recommended for faster auto-completion
+      "esModuleInterop": true,  // Recommended for modern project setups
+      "allowSyntheticDefaultImports": true  // Recommended for modern project setups
+    },
+    "include": ["src"] // Replace with your source directory if different
+  }
+  
