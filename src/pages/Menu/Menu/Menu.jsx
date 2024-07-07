@@ -1,6 +1,10 @@
 import { Helmet } from "react-helmet-async";
 import Cover from "../../shared/Cover/Cover";
-import menu1 from "../../../assets/menu/pizza-bg.jpg";
+import mainCover from "../../../assets/menu/pizza-bg.jpg";
+import pizaaPhoto from "../../../assets/menu/pizza-bg.jpg";
+import dessertPhoto from "../../../assets/menu/dessert-bg.jpeg";
+import saladPhoto from "../../../assets/menu/salad-bg.jpg";
+import soupPhoto from "../../../assets/menu/soup-bg.jpg";
 import useMenu from "../../../hooks/useMenu";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import MenuCategory from "../MenuCategory/MenuCategory";
@@ -19,7 +23,7 @@ const Menu = () => {
       </Helmet>
       {/* for today's offered section */}
       <Cover
-        img={menu1}
+        img={mainCover}
         title={"OUR MENU"}
         subTitle={"Would you like to try a dish"}
       ></Cover>
@@ -28,6 +32,14 @@ const Menu = () => {
         heading={"Today's offer"}
       ></SectionTitle>
       <MenuCategory items={offered}></MenuCategory>
+
+      {/* for dessert section */}
+      <Cover
+        img={dessertPhoto}
+        title={"Desserts"}
+        subTitle={"Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."}
+      ></Cover>
+      <MenuCategory items={dessert}></MenuCategory>
     </div>
   );
 };
