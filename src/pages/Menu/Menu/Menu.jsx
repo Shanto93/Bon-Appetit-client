@@ -32,7 +32,7 @@ const Menu = () => {
         subheading={"Don't Miss"}
         heading={"Today's offer"}
       ></SectionTitle>
-      <MenuCategory items={offered}></MenuCategory>
+      <MenuCategory title= "offered" items={offered}></MenuCategory>
 
       {/* for dessert section */}
       <Cover
@@ -40,7 +40,7 @@ const Menu = () => {
         title={"Dessert"}
         subTitle={"Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."}
       ></Cover>
-      <MenuCategory items={dessert}></MenuCategory>
+      <MenuCategory title= "dessert" items={dessert}></MenuCategory>
 
       {/* for pizza section */}
       <Cover
@@ -48,7 +48,7 @@ const Menu = () => {
         title={"Pizza"}
         subTitle={"Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."}
       ></Cover>
-      <MenuCategory items={pizza}></MenuCategory>
+      <MenuCategory title= "pizza" items={pizza}></MenuCategory>
 
       {/* for salads section */}
       <Cover
@@ -56,7 +56,7 @@ const Menu = () => {
         title={"Salad"}
         subTitle={"Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."}
       ></Cover>
-      <MenuCategory items={salad}></MenuCategory>
+      <MenuCategory title= "salad" items={salad}></MenuCategory>
 
       {/* for soup section */}
       <Cover
@@ -64,7 +64,7 @@ const Menu = () => {
         title={"Soup"}
         subTitle={"Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book."}
       ></Cover>
-      <MenuCategory items={soup}></MenuCategory>
+      <MenuCategory title= "soup" items={soup}></MenuCategory>
     </div>
   );
 };
