@@ -1,11 +1,15 @@
-import { useEffect, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import {
   loadCaptchaEnginge,
   LoadCanvasTemplate,
   validateCaptcha,
 } from "react-simple-captcha";
+import { AuthContext } from "../../../providers/AuthProvider";
+import { Link } from "react-router-dom";
+import loginImg from '../../../assets/others/authentication1.png';
 
 const Login = () => {
+  const { login } = useContext(AuthContext);
   const [disabled, setDisabled] = useState(true);
   const captchaField = useRef(null);
 
@@ -29,18 +33,19 @@ const Login = () => {
     const email = form.email.value;
     const password = form.password.value;
     console.log(email, password);
+
+    login(email, password).then((result) => {
+      const user = result.user;
+      console.log(user);
+    });
   };
 
   return (
     <div className="hero bg-base-200 min-h-screen">
       <div className="hero-content flex-col lg:flex-row">
         <div className="text-center lg:text-left">
-          <h1 className="text-5xl font-bold">Login now!</h1>
-          <p className="py-6">
-            Provident cupiditate voluptatem et in. Quaerat fugiat ut assumenda
-            excepturi exercitationem quasi. In deleniti eaque aut repudiandae et
-            a id nisi.
-          </p>
+          <h1 className="md:text-5xl font-bold mb-5 text-center">Login now!</h1>
+          <img src={loginImg} alt="Authentication Image" />
         </div>
         <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
           <form onSubmit={handleLogin} className="card-body">
@@ -97,6 +102,16 @@ const Login = () => {
               />
             </div>
           </form>
+
+          <div>
+            <p className="text-center pb-7">
+              Did not signup yet. Please
+              <Link to={"/signup"}>
+                {" "}
+                <span className="text-blue-500">SIGNUP</span>{" "}
+              </Link>{" "}
+            </p>
+          </div>
         </div>
       </div>
     </div>
