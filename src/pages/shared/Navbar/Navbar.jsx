@@ -2,9 +2,11 @@ import { useContext } from "react";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
 import { TiShoppingCart } from "react-icons/ti";
+import useCart from "../../../hooks/useCart";
 
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
+  const [cart] = useCart();
 
   const handleLogOut = () => {
     logout()
@@ -29,8 +31,8 @@ const Navbar = () => {
       <li>
         <Link to={"cart"}>
           <button className="btn bg-transparent border-0 btn-sm">
-          <TiShoppingCart className="text-xl text-white"/>
-            <div className="badge badge-secondary">+99</div>
+            <TiShoppingCart className="text-xl text-white" />
+            <div className="badge badge-secondary">+{cart.length}</div>
           </button>
         </Link>{" "}
       </li>
@@ -82,7 +84,11 @@ const Navbar = () => {
           <ul className="menu menu-horizontal px-1">{navOptions}</ul>
         </div>
         <div className="navbar-end">
-          {user ? <button className="btn">{user.displayName}</button> : <button className="bg-transparent"></button>}
+          {user ? (
+            <button className="btn">{user.displayName}</button>
+          ) : (
+            <button className="bg-transparent"></button>
+          )}
         </div>
       </div>
     </div>
