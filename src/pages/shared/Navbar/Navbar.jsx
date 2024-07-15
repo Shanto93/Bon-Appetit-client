@@ -29,7 +29,7 @@ const Navbar = () => {
         <Link to={"order/salad"}>OUR SHOP</Link>{" "}
       </li>
       <li>
-        <Link to={"cart"}>
+        <Link to="/dashboard/cart">
           <button className="btn bg-transparent border-0 btn-sm">
             <TiShoppingCart className="text-xl text-white" />
             <div className="badge badge-secondary">+{cart.length}</div>
