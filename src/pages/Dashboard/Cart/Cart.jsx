@@ -1,17 +1,19 @@
-import { useState } from 'react';
+import { useState } from "react";
 import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 import useCart from "../../../hooks/useCart";
 import { FaTrashAlt } from "react-icons/fa";
+import Swal from "sweetalert2";
+import { axiosSecure } from "../../../hooks/useAxiosSecure";
 
 const Cart = () => {
-  const [cart] = useCart();
+  const [cart, refetch] = useCart();
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(5);
 
   // Calculate the indices of the first and last items on the current page
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  
+
   // Get the items to display on the current page
   const currentItems = cart.slice(indexOfFirstItem, indexOfLastItem);
 
@@ -19,6 +21,31 @@ const Cart = () => {
   const totalPages = Math.ceil(cart.length / itemsPerPage);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
+
+  const handleDeleteCartItem = (cartId) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        axiosSecure.delete(`/carts/${cartId}`).then((res) => {
+          if (res.data.deletedCount > 0) {
+            refetch();
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your file has been deleted.",
+              icon: "success",
+            });
+          }
+        });
+      }
+    });
+  };
 
   return (
     <div>
@@ -80,7 +107,10 @@ const Cart = () => {
                     <span className="font-semibold">$ {item.price}</span>
                   </td>
                   <th>
-                    <button className="btn btn-ghost">
+                    <button
+                      onClick={() => handleDeleteCartItem(item._id)}
+                      className="btn btn-ghost"
+                    >
                       <FaTrashAlt className="text-3xl text-red-700 hover:text-blue-700" />
                     </button>
                   </th>
@@ -96,8 +126,16 @@ const Cart = () => {
         <nav>
           <ul className="pagination flex gap-2">
             {Array.from({ length: totalPages }, (_, index) => (
-              <li key={index} className={`page-item ${currentPage === index + 1 ? 'active' : ''}`}>
-                <button onClick={() => paginate(index + 1)} className="btn btn-ghost">
+              <li
+                key={index}
+                className={`page-item ${
+                  currentPage === index + 1 ? "active" : ""
+                }`}
+              >
+                <button
+                  onClick={() => paginate(index + 1)}
+                  className="btn btn-ghost"
+                >
                   {index + 1}
                 </button>
               </li>
