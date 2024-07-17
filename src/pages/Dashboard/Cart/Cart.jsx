@@ -51,8 +51,8 @@ const Cart = () => {
     <div>
       <div>
         <SectionTitle
-          heading={".........."}
-          subheading={"lkaasndlk"}
+          heading={"MANAGE ITEMS"}
+          subheading={"---Hurry Up!---"}
         ></SectionTitle>
       </div>
 

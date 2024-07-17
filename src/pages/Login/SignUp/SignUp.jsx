@@ -1,34 +1,52 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import signUPImg from "../../../assets/others/authentication.gif";
 import { useForm } from "react-hook-form";
 import { Helmet } from "react-helmet-async";
 import { useContext } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
 import Swal from "sweetalert2";
+import useAxiosPublic from "../../../hooks/useAxiosPublic";
 
 const SignUp = () => {
+  const navigate = useNavigate();
+  const axiosPublic = useAxiosPublic();
   const { createUser, updateUser } = useContext(AuthContext);
   const {
     register,
+    reset,
     handleSubmit,
     formState: { errors },
   } = useForm();
   const onSubmit = (data) => {
     createUser(data.email, data.password).then((result) => {
       const loggedUser = result.user;
+      console.log(loggedUser);
       updateUser(data.name, data.photo)
-        .then(() => console.log(loggedUser))
+        .then(() => {
+          const userInfo = {
+            name: data.name,
+            email: data.email,
+          };
+
+          axiosPublic.post("/users", userInfo).then((res) => {
+            if (res.data.insertedId) {
+              console.log("User created successfully");
+              reset();
+
+              Swal.fire({
+                position: "top-end",
+                icon: "success",
+                title: "User Created Successfully",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+              navigate("/");
+            }
+          });
+        })
         .catch((error) => {
           console.log(error);
         });
-
-      Swal.fire({
-        position: "top-end",
-        icon: "success",
-        title: "User Created Successfully",
-        showConfirmButton: false,
-        timer: 1500,
-      });
     });
   };
 

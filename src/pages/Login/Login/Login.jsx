@@ -9,6 +9,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import loginImg from "../../../assets/others/authentication1.png";
 import { Helmet } from "react-helmet-async";
 import Swal from "sweetalert2";
+import GoogleSignIn from "../../../components/SocialSignIn/GoogleSignIn";
 
 const Login = () => {
   const { login } = useContext(AuthContext);
@@ -117,12 +118,15 @@ const Login = () => {
             </form>
 
             <div>
+              <GoogleSignIn></GoogleSignIn>
+            </div>
+
+            <div>
               <p className="text-center pb-7">
                 Did not signup yet. Please
                 <Link to={"/signup"}>
-                  {" "}
                   <span className="text-blue-500">SIGNUP</span>{" "}
-                </Link>{" "}
+                </Link>
               </p>
             </div>
           </div>

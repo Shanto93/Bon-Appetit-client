@@ -6,8 +6,10 @@ import { TbBrandBooking } from "react-icons/tb";
 import { IoMdHome } from "react-icons/io";
 import { BiSolidFoodMenu } from "react-icons/bi";
 import { SlCalender } from "react-icons/sl";
+import useCart from "../hooks/useCart";
 
 const Dashboard = () => {
+    const [cart] = useCart();
   return (
     <div className="flex">
       {/* Sidebar */}
@@ -28,7 +30,7 @@ const Dashboard = () => {
           <li>
             <NavLink to="/dashboard/cart">
               <HiShoppingCart />
-              My Cart
+              My Cart ({cart.length})
             </NavLink>
           </li>
           <li>
