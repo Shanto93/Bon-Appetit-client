@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
 import { TiShoppingCart } from "react-icons/ti";
 import useCart from "../../../hooks/useCart";
@@ -17,24 +17,51 @@ const Navbar = () => {
   const navOptions = (
     <>
       <li>
-        <Link to={"/"}>HOME</Link>{" "}
+        <NavLink
+          to="/"
+          className={({ isActive }) =>
+            isActive ? " text-orange-600" : "btn btn-ghost"
+          }
+        >
+          Home
+        </NavLink>
       </li>
       <li>
-        <Link to={"menu"}>OUR MENU</Link>{" "}
+        <NavLink
+          to="menu"
+          className={({ isActive }) =>
+            isActive ? " text-orange-600" : "btn btn-ghost"
+          }
+        >
+          OUR MENU
+        </NavLink>
       </li>
       <li>
-        <Link to={"secret"}>SECRET</Link>{" "}
+        <NavLink
+          to="order/salad"
+          className={({ isActive }) =>
+            isActive ? " text-orange-600" : "btn btn-ghost"
+          }
+        >
+          OUR SHOP
+        </NavLink>
       </li>
       <li>
-        <Link to={"order/salad"}>OUR SHOP</Link>{" "}
+        <NavLink
+          to="secret"
+          className={({ isActive }) =>
+            isActive ? " text-orange-600" : "btn btn-ghost"
+          }
+        ></NavLink>{" "}
       </li>
+
       <li>
         <Link to="/dashboard/cart">
           <button className="btn bg-transparent border-0 btn-sm">
             <TiShoppingCart className="text-xl text-white" />
             <div className="badge badge-secondary">+{cart.length}</div>
           </button>
-        </Link>{" "}
+        </Link>
       </li>
 
       {user ? (
