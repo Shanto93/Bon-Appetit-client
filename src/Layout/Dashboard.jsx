@@ -13,12 +13,13 @@ import { IoMdHome } from "react-icons/io";
 import { BiSolidFoodMenu } from "react-icons/bi";
 import { SlCalender } from "react-icons/sl";
 import useCart from "../hooks/useCart";
+import useAdmin from "../hooks/useAdmin";
 
 const Dashboard = () => {
   const [cart] = useCart();
 
   // TODO: Get isAdmin data from database
-  const isAdmin = true;
+  const [isAdmin] = useAdmin();
   return (
     <div className="flex">
       {/* Sidebar */}
