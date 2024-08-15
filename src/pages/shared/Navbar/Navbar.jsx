@@ -20,7 +20,7 @@ const Navbar = () => {
         <NavLink
           to="/"
           className={({ isActive }) =>
-            isActive ? " text-orange-600" : "btn btn-ghost"
+            isActive ? "btn bg-transparent border-0 text-orange-600" : "btn btn-ghost"
           }
         >
           Home
@@ -30,7 +30,7 @@ const Navbar = () => {
         <NavLink
           to="menu"
           className={({ isActive }) =>
-            isActive ? " text-orange-600" : "btn btn-ghost"
+            isActive ? "btn bg-transparent border-0 text-orange-600" : "btn btn-ghost"
           }
         >
           OUR MENU
@@ -40,19 +40,11 @@ const Navbar = () => {
         <NavLink
           to="order/salad"
           className={({ isActive }) =>
-            isActive ? " text-orange-600" : "btn btn-ghost"
+            isActive ? "btn bg-transparent border-0 text-orange-600" : "btn btn-ghost"
           }
         >
           OUR SHOP
         </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="secret"
-          className={({ isActive }) =>
-            isActive ? " text-orange-600" : "btn btn-ghost"
-          }
-        ></NavLink>{" "}
       </li>
 
       <li>
