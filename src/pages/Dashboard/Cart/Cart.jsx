@@ -4,6 +4,7 @@ import useCart from "../../../hooks/useCart";
 import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { axiosSecure } from "../../../hooks/useAxiosSecure";
+import { Link } from "react-router-dom";
 
 const Cart = () => {
   const [cart, refetch] = useCart();
@@ -63,9 +64,20 @@ const Cart = () => {
           Total Price:
           {cart.reduce((total, item) => total + item.price, 0)}
         </p>
-        <button className="btn btn-ghost text-xl font-semibold bg-blue-700 text-white">
-          Pay
-        </button>
+        {cart.length > 0 ? (
+          <Link to="/dashboard/payment">
+            <button className="btn btn-ghost text-xl font-semibold bg-blue-700 text-white">
+              Pay
+            </button>
+          </Link>
+        ) : (
+          <button
+            disabled
+            className="btn btn-ghost text-xl font-semibold bg-blue-700 text-white"
+          >
+            Pay
+          </button>
+        )}
       </div>
 
       {/* Table Content */}

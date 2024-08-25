@@ -14,6 +14,8 @@ import AddItems from "../pages/Dashboard/AddItems/AddItems";
 import ManageItems from "../pages/Dashboard/ManageItems/ManageItems";
 import AdminRoute from "./AdminRoute";
 import UpdateMenuItem from "../pages/Dashboard/ManageItems/UpdateMenuItem";
+import Payment from "../pages/Dashboard/Payment/Payment";
+import PaymentHistory from "../pages/Dashboard/Payment/PaymentHistory/PaymentHistory";
 
 export const router = createBrowserRouter([
   {
@@ -58,6 +60,15 @@ export const router = createBrowserRouter([
       </PrivateRoute>
     ),
     children: [
+      // User only routes
+      {
+        path: "payment",
+        element: <Payment></Payment>,
+      },
+      {
+        path: "paymentHistory",
+        element: <PaymentHistory></PaymentHistory>,
+      },
       {
         path: "cart",
         element: <Cart></Cart>,
