@@ -34,11 +34,11 @@ const PaymentHistory = () => {
             </tr>
           </thead>
           <tbody>
-            {payments.map((item,index)=> <tr key={index} className="bg-base-200">
+            {payments?.map((item,index)=> <tr key={index} className="bg-base-200">
               <th>{index+1}</th>
-              <td>${item.price}</td>
-              <td>{item.transactionId}</td>
-              <td>{item.status}</td>
+              <td>${item?.price}</td>
+              <td>{item?.transactionId}</td>
+              <td>{item?.status}</td>
             </tr>)}
             
           </tbody>
