@@ -20,6 +20,7 @@ const Order = () => {
   const salad = menu.filter((item) => item.category === "salad");
   const pizza = menu.filter((item) => item.category === "pizza");
   const drinks = menu.filter((item) => item.category === "drinks");
+
   return (
     <div>
       <Helmet>
@@ -31,15 +32,30 @@ const Order = () => {
         subTitle={"Would you like to try a dish?"}
       ></Cover>
 
-      <div className="flex justify-center items-center mt-16">
-        <Tabs defaultIndex={tabIndex} onSelect={(index) => setTabIndex(index)}>
-          <TabList>
-            <Tab>SALAD</Tab>
-            <Tab>PIZZA</Tab>
-            <Tab>SOUPS</Tab>
-            <Tab>DESSERTS</Tab>
-            <Tab>DRINKS</Tab>
+      <div className="mt-16">
+        <Tabs
+          defaultIndex={tabIndex}
+          onSelect={(index) => setTabIndex(index)}
+          className="flex flex-col items-center"
+        >
+          <TabList className="flex flex-wrap justify-center mb-8">
+            <Tab className="px-4 py-2 cursor-pointer text-sm md:text-base lg:text-lg mx-2 my-2 md:my-0 border-b-2 hover:text-orange-500 focus:text-orange-500">
+              SALAD
+            </Tab>
+            <Tab className="px-4 py-2 cursor-pointer text-sm md:text-base lg:text-lg mx-2 my-2 md:my-0 border-b-2 hover:text-orange-500 focus:text-orange-500">
+              PIZZA
+            </Tab>
+            <Tab className="px-4 py-2 cursor-pointer text-sm md:text-base lg:text-lg mx-2 my-2 md:my-0 border-b-2 hover:text-orange-500 focus:text-orange-500">
+              SOUPS
+            </Tab>
+            <Tab className="px-4 py-2 cursor-pointer text-sm md:text-base lg:text-lg mx-2 my-2 md:my-0 border-b-2 hover:text-orange-500 focus:text-orange-500">
+              DESSERTS
+            </Tab>
+            <Tab className="px-4 py-2 cursor-pointer text-sm md:text-base lg:text-lg mx-2 my-2 md:my-0 border-b-2 hover:text-orange-500 focus:text-orange-500">
+              DRINKS
+            </Tab>
           </TabList>
+
           <TabPanel>
             <OrderTab items={salad}></OrderTab>
           </TabPanel>

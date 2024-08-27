@@ -123,9 +123,9 @@ const Login = () => {
 
             <div>
               <p className="text-center pb-7">
-                Did not signup yet. Please
+                Did not signup yet. Please 
                 <Link to={"/signup"}>
-                  <span className="text-blue-500">SIGNUP</span>
+                  <span className="text-blue-500"> SIGNUP</span>
                 </Link>
               </p>
             </div>

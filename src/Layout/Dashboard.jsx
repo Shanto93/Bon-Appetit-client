@@ -16,14 +16,13 @@ import useAdmin from "../hooks/useAdmin";
 
 const Dashboard = () => {
   const [cart] = useCart();
-
-  // TODO: Get isAdmin data from database
   const [isAdmin] = useAdmin();
+
   return (
-    <div className="flex">
+    <div className="flex flex-col md:flex-row">
       {/* Sidebar */}
-      <div className="w-64 min-h-screen bg-yellow-500">
-        <ul className="menu p-4">
+      <div className="w-full md:w-64 min-h-screen bg-yellow-500 md:fixed md:left-0">
+        <ul className="menu p-4 text-center md:text-left">
           {isAdmin ? (
             <>
               <li>
@@ -103,8 +102,9 @@ const Dashboard = () => {
         </ul>
       </div>
 
-      <div className="flex-1 ml-8">
-        <Outlet></Outlet>
+      {/* Main Content */}
+      <div className="flex-1 mt-8 md:ml-64 p-4">
+        <Outlet />
       </div>
     </div>
   );

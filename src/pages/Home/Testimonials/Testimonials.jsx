@@ -13,10 +13,11 @@ const Testimonials = () => {
   const [reviews, getReviews] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/reviews")
+    fetch("https://bistro-boss-server-tau-topaz.vercel.app/reviews")
       .then((res) => res.json())
       .then((data) => getReviews(data));
   }, []);
+
   return (
     <div className="mb-20">
       <SectionTitle
@@ -28,14 +29,14 @@ const Testimonials = () => {
         {reviews.map((review) => (
           <SwiperSlide key={review._id}>
             {/* Rating */}
-            <div className="mx-24 flex flex-col items-center">
+            <div className="px-4 md:px-24 flex flex-col items-center">
               <Rating
                 style={{ maxWidth: 180 }}
                 value={review.rating}
                 readOnly
               />
-              <p className="mt-2">{review.details} </p>
-              <h2 className="text-3xl text-orange-500">{review.name}</h2>
+              <p className="mt-2 text-center">{review.details} </p>
+              <h2 className="text-xl md:text-3xl text-orange-500 mt-2">{review.name}</h2>
             </div>
           </SwiperSlide>
         ))}

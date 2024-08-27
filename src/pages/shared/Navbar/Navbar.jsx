@@ -3,10 +3,12 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../../providers/AuthProvider";
 import { TiShoppingCart } from "react-icons/ti";
 import useCart from "../../../hooks/useCart";
+import useAdmin from "../../../hooks/useAdmin";
 
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
   const [cart] = useCart();
+  const [isAdmin] = useAdmin();
 
   const handleLogOut = () => {
     logout()
@@ -129,21 +131,31 @@ const Navbar = () => {
                 <li>
                   <div className="flex justify-center items-center w-28 h-28 mx-auto hover:bg-transparent">
                     <img
-                      className="w-24 h-24 rounded-full"
+                      className="w-20 h-20 rounded-full"
                       src={user.photoURL}
                       alt=""
                     />
                   </div>
                   <div className="flex justify-center items-center">
-                    <p className="text-white text-center font-bold text-2xl">
+                    {
+                      isAdmin?
+                      <Link to="/dashboard/adminHome">
+                      <button className="btn btn-sm bg-transparent border-0 text-xl text-center font-bold text-white hover:bg-transparent hover:text-orange-500">
+                        {user.displayName}
+                      </button>
+                    </Link>:
+                    <Link to="/dashboard/userHome">
+                    <button className="btn btn-sm bg-transparent border-0 text-xl text-center font-bold text-white hover:bg-transparent hover:text-orange-500">
                       {user.displayName}
-                    </p>
+                    </button>
+                  </Link>
+                    }
                   </div>
                 </li>
                 <li>
                   <button
                     onClick={handleLogOut}
-                    className="btn bg-transparent mb-5 border-0 text-xl text-center font-bold text-white hover:bg-transparent hover:text-orange-500"
+                    className="btn bg-transparent btn-sm mb-5 border-0 text-xl text-center font-bold text-white hover:bg-transparent hover:text-orange-500"
                   >
                     LogOut
                   </button>

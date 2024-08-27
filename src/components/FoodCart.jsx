@@ -11,8 +11,7 @@ const FoodCart = ({ item }) => {
   const location = useLocation();
   const [, refetch] = useCart();
 
-  const handleAddToCart = (food) => {
-    console.log(food);
+  const handleAddToCart = () => {
     if (user && user.email) {
       const sentItem = {
         food_id: _id,
@@ -24,7 +23,6 @@ const FoodCart = ({ item }) => {
       };
 
       axiosSecure.post("/carts", sentItem).then((res) => {
-        console.log(res.data);
         if (res.data.insertedId) {
           Swal.fire({
             position: "top-end",
@@ -54,16 +52,16 @@ const FoodCart = ({ item }) => {
   };
 
   return (
-    <div className="card bg-base-100 w-72 shadow-xl">
-      <figure className="">
-        <img src={image} alt="Menu Items Photo" className="rounded-md" />
+    <div className="card bg-base-100 w-full sm:w-64 md:w-72 shadow-xl mx-auto">
+      <figure className="relative">
+        <img src={image} alt="Menu Items Photo" className="rounded-md w-full h-36 sm:h-40 md:h-48 object-cover" />
+        <p className="absolute top-2 right-2 px-2 py-1 bg-slate-400 text-white rounded-md font-semibold hover:text-orange-500 hover:bg-transparent">
+          {price}
+        </p>
       </figure>
-      <p className="absolute top-2 right-2 px-2 py-1 bg-slate-400 text-white rounded-md font-semibold hover:text-orange-500 hover:bg-transparent">
-        {price}{" "}
-      </p>
       <div className="card-body items-center text-center">
-        <h2 className="card-title">{name} </h2>
-        <p className="text-sm">{recipe} </p>
+        <h2 className="card-title text-lg md:text-xl">{name}</h2>
+        <p className="text-sm md:text-base">{recipe}</p>
         <div className="card-actions">
           <button
             onClick={() => handleAddToCart(item)}

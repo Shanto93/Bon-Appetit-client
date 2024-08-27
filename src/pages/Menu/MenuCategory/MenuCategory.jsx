@@ -10,7 +10,7 @@ const MenuCategory = ({ items, title }) => {
         ))}
       </div>
       <Link to={`/order/${title}`}>
-        <div className="md:flex justify-center items-center mb-16">
+        <div className="md:flex justify-center items-center mb-6 md:mb-16">
           <button className="btn btn-outline mt-2 border-0 border-b-4 rounded-lg hover:border-orange-500">
             Order {title}
           </button>

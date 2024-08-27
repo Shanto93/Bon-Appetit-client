@@ -3,6 +3,7 @@ import useAdmin from "../../../hooks/useAdmin";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
+
 const UserHome = () => {
   const { user } = useAuth();
   const [isAdmin] = useAdmin();
@@ -15,6 +16,8 @@ const UserHome = () => {
       return res.data;
     },
   });
+
+  console.log(userData.payments);
 
   return (
     <div>
