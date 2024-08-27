@@ -20,7 +20,9 @@ const Navbar = () => {
         <NavLink
           to="/"
           className={({ isActive }) =>
-            isActive ? "btn bg-transparent border-0 text-orange-600" : "btn btn-ghost"
+            isActive
+              ? "btn bg-transparent border-0 text-orange-600"
+              : "btn btn-ghost"
           }
         >
           Home
@@ -30,7 +32,9 @@ const Navbar = () => {
         <NavLink
           to="menu"
           className={({ isActive }) =>
-            isActive ? "btn bg-transparent border-0 text-orange-600" : "btn btn-ghost"
+            isActive
+              ? "btn bg-transparent border-0 text-orange-600"
+              : "btn btn-ghost"
           }
         >
           OUR MENU
@@ -40,7 +44,9 @@ const Navbar = () => {
         <NavLink
           to="order/salad"
           className={({ isActive }) =>
-            isActive ? "btn bg-transparent border-0 text-orange-600" : "btn btn-ghost"
+            isActive
+              ? "btn bg-transparent border-0 text-orange-600"
+              : "btn btn-ghost"
           }
         >
           OUR SHOP
@@ -57,9 +63,10 @@ const Navbar = () => {
       </li>
 
       {user ? (
-        <button onClick={handleLogOut} className="btn btn-ghost">
-          LOGOUT
-        </button>
+        // <button onClick={handleLogOut} className="btn btn-ghost">
+        //   LOGOUT
+        // </button>
+        ""
       ) : (
         <Link to={"login"}>
           <button className="btn btn-ghost">LOGIN</button>
@@ -104,11 +111,56 @@ const Navbar = () => {
         </div>
         <div className="navbar-end">
           {user ? (
-            <button className="btn">{user.displayName}</button>
+            <div className="dropdown dropdown-hover dropdown-end">
+              <label
+                tabIndex={0}
+                className="btn m-1 bg-transparent border-0 hover:bg-transparent"
+              >
+                <img
+                  className="w-14 h-14 ml-3 rounded-full mt-0 "
+                  src={user.photoURL}
+                  alt=""
+                />
+              </label>
+              <ul
+                tabIndex={0}
+                className="dropdown-content z-[1] menu p-2 shadow bg-black bg-opacity-50 rounded-box w-52"
+              >
+                <li>
+                  <div className="flex justify-center items-center w-28 h-28 mx-auto hover:bg-transparent">
+                    <img
+                      className="w-24 h-24 rounded-full"
+                      src={user.photoURL}
+                      alt=""
+                    />
+                  </div>
+                  <div className="flex justify-center items-center">
+                    <p className="text-white text-center font-bold text-2xl">
+                      {user.displayName}
+                    </p>
+                  </div>
+                </li>
+                <li>
+                  <button
+                    onClick={handleLogOut}
+                    className="btn bg-transparent mb-5 border-0 text-xl text-center font-bold text-white hover:bg-transparent hover:text-orange-500"
+                  >
+                    LogOut
+                  </button>
+                </li>
+              </ul>
+            </div>
+          ) : (
+            ""
+          )}
+        </div>
+        {/* <div className="navbar-end">
+          {user ? (
+            <button className="btn h-14 w-14 rounded-full"><img className="w-full h-full" src={user.photoURL} alt="" /> </button>
           ) : (
             <button className="bg-transparent"></button>
           )}
-        </div>
+        </div> */}
       </div>
     </div>
   );

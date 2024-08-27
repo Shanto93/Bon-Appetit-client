@@ -21,6 +21,7 @@ const AddReview = () => {
       rating: data.rating,
       category: data.category,
       suggestion: data.suggestion,
+      email: user.email
     };
 
     const res = await axiosSecure.post("/reviews", reviewItem);
