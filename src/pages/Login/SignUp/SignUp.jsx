@@ -7,6 +7,9 @@ import { AuthContext } from "../../../providers/AuthProvider";
 import Swal from "sweetalert2";
 import useAxiosPublic from "../../../hooks/useAxiosPublic";
 
+const Image_Hosting_Key = import.meta.env.VITE_image_hosting_api;
+const Image_Hosting_API = `https://api.imgbb.com/1/upload?key=${Image_Hosting_Key}`;
+
 const SignUp = () => {
   const navigate = useNavigate();
   const axiosPublic = useAxiosPublic();
@@ -17,15 +20,24 @@ const SignUp = () => {
     handleSubmit,
     formState: { errors },
   } = useForm();
-  const onSubmit = (data) => {
+  const onSubmit = async (data) => {
+    //Image upload to Imgbb and then get URL
+    const FileList = { image: data.image[0] };
+    const res = await axiosPublic.post(Image_Hosting_API, FileList, {
+      headers: {
+        "content-type": "multipart/form-data",
+      },
+    });
+    console.log(res.data);
     createUser(data.email, data.password).then((result) => {
       const loggedUser = result.user;
       console.log(loggedUser);
-      updateUser(data.name, data.photo)
+      updateUser(data.name, res.data.data.display_url)
         .then(() => {
           const userInfo = {
             name: data.name,
             email: data.email,
+            photoURL: res.data.data.display_url,
           };
 
           axiosPublic.post("/users", userInfo).then((res) => {
@@ -79,7 +91,15 @@ const SignUp = () => {
                   <span className="text-red-600">Name is required</span>
                 )}
               </div>
-              <div className="form-control">
+
+              {/* choose file field */}
+              <input
+                {...register("image", { required: true })}
+                type="file"
+                className="file-input max-w-sm hover:input-warning mt-3"
+              />
+
+              {/* <div className="form-control">
                 <label className="label">
                   <span className="label-text">Photo URL</span>
                 </label>
@@ -92,7 +112,7 @@ const SignUp = () => {
                 {errors.photo && (
                   <span className="text-red-600">Photo URL is required</span>
                 )}
-              </div>
+              </div> */}
               <div className="form-control">
                 <label className="label">
                   <span className="label-text">Email</span>

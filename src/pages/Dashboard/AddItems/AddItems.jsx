@@ -30,7 +30,7 @@ const AddItems = () => {
         price: parseFloat(data.price),
         category: data.category,
         image: res.data.data.display_url
-      }
+      } 
       const imgres = await axiosSecure.post('/menu',menuItem)
       console.log(imgres.data);
       if(imgres.data.insertedId){

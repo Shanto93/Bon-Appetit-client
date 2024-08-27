@@ -8,7 +8,6 @@ import {
   FaUsers,
 } from "react-icons/fa";
 import { MdOutlineRateReview } from "react-icons/md";
-import { TbBrandBooking } from "react-icons/tb";
 import { IoMdHome } from "react-icons/io";
 import { BiSolidFoodMenu } from "react-icons/bi";
 import { SlCalender } from "react-icons/sl";
@@ -46,12 +45,6 @@ const Dashboard = () => {
                 </NavLink>
               </li>
               <li>
-                <NavLink to="/dashboard/manageBookings">
-                  <MdOutlineRateReview />
-                  MANAGE BOOKINGS
-                </NavLink>
-              </li>
-              <li>
                 <NavLink to="/dashboard/allUsers">
                   <FaUsers />
                   ALL USERS
@@ -82,12 +75,6 @@ const Dashboard = () => {
                 <NavLink to="/dashboard/reviews">
                   <MdOutlineRateReview />
                   Add Review
-                </NavLink>
-              </li>
-              <li>
-                <NavLink to="/dashboard/bookings">
-                  <TbBrandBooking />
-                  My Bookings
                 </NavLink>
               </li>
             </>

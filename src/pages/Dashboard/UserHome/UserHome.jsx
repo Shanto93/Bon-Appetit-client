@@ -6,6 +6,7 @@ const UserHome = () => {
   return (
     <div>
       <h1>Hi Welcome {user.displayName ? user.displayName : "back"}!</h1>
+      <h2>I am still working on user home....</h2>
     </div>
   );
 };
