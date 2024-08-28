@@ -21,7 +21,7 @@ const Dashboard = () => {
   return (
     <div className="flex flex-col md:flex-row">
       {/* Sidebar */}
-      <div className="w-full md:w-64 min-h-screen bg-yellow-500 md:fixed md:left-0">
+      <div className="w-full md:w-64 min-h-fit md:min-h-screen bg-yellow-500 md:fixed md:left-0">
         <ul className="menu p-4 text-center md:text-left">
           {isAdmin ? (
             <>

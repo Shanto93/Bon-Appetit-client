@@ -64,16 +64,18 @@ const Navbar = () => {
         </Link>
       </li>
 
-      {user ? (
-        // <button onClick={handleLogOut} className="btn btn-ghost">
-        //   LOGOUT
-        // </button>
-        ""
-      ) : (
-        <Link to={"login"}>
-          <button className="btn btn-ghost">LOGIN</button>
-        </Link>
-      )}
+      <li>
+        {user ? (
+          // <button onClick={handleLogOut} className="btn btn-ghost">
+          //   LOGOUT
+          // </button>
+          ""
+        ) : (
+          <Link to={"login"}>
+            <button className="btn btn-ghost">LOGIN</button>
+          </Link>
+        )}
+      </li>
     </>
   );
   return (
@@ -137,19 +139,19 @@ const Navbar = () => {
                     />
                   </div>
                   <div className="flex justify-center items-center">
-                    {
-                      isAdmin?
+                    {isAdmin ? (
                       <Link to="/dashboard/adminHome">
-                      <button className="btn btn-sm bg-transparent border-0 text-xl text-center font-bold text-white hover:bg-transparent hover:text-orange-500">
-                        {user.displayName}
-                      </button>
-                    </Link>:
-                    <Link to="/dashboard/userHome">
-                    <button className="btn btn-sm bg-transparent border-0 text-xl text-center font-bold text-white hover:bg-transparent hover:text-orange-500">
-                      {user.displayName}
-                    </button>
-                  </Link>
-                    }
+                        <button className="btn btn-sm bg-transparent border-0 text-xl text-center font-bold text-white hover:bg-transparent hover:text-orange-500">
+                          {user.displayName}
+                        </button>
+                      </Link>
+                    ) : (
+                      <Link to="/dashboard/userHome">
+                        <button className="btn btn-sm bg-transparent border-0 text-xl text-center font-bold text-white hover:bg-transparent hover:text-orange-500">
+                          {user.displayName}
+                        </button>
+                      </Link>
+                    )}
                   </div>
                 </li>
                 <li>
