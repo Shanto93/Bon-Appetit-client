@@ -67,68 +67,56 @@ const SignUp = () => {
       <Helmet>
         <title>Bistro | Signup</title>
       </Helmet>
-      <div className="hero bg-base-200 min-h-screen">
-        <div className="hero-content flex-col lg:flex-row">
-          <div className="text-center lg:text-left">
-            <h1 className="text-3xl md:text-5xl font-bold mb-5 text-center">
+      <div className="hero bg-base-200 min-h-screen flex flex-col lg:flex-row lg:justify-center lg:items-center">
+        <div className="hero-content flex flex-col lg:flex-row lg:space-x-8 w-full lg:w-2/3 max-w-screen-lg">
+          <div className="text-center lg:text-left flex-1 lg:mr-8">
+            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-5">
               Signup now!
             </h1>
-            <img src={signUPImg} alt="Authentication Image" />
+            <img src={signUPImg} alt="Authentication" className="w-full max-w-md mx-auto lg:mx-0" />
           </div>
-          <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+          <div className="card bg-base-100 w-full max-w-sm mx-auto lg:mx-0 shadow-2xl">
             <form onSubmit={handleSubmit(onSubmit)} className="card-body">
-              <div className="form-control">
+              <div className="form-control mb-4">
                 <label className="label">
                   <span className="label-text">Name</span>
                 </label>
                 <input
                   type="text"
                   {...register("name", { required: true })}
-                  placeholder="name"
+                  placeholder="Name"
                   className="input input-bordered"
                 />
                 {errors.name && (
-                  <span className="text-red-600">Name is required</span>
+                  <span className="text-red-600 text-sm">Name is required</span>
                 )}
               </div>
 
-              {/* choose file field */}
-              <input
-                {...register("image", { required: true })}
-                type="file"
-                className="file-input max-w-sm hover:input-warning mt-3"
-              />
-
-              {/* <div className="form-control">
-                <label className="label">
-                  <span className="label-text">Photo URL</span>
-                </label>
+              {/* Choose file field */}
+              <div className="form-control mb-4">
                 <input
-                  type="text"
-                  {...register("photo", { required: true })}
-                  placeholder="photo url"
-                  className="input input-bordered"
+                  {...register("image", { required: true })}
+                  type="file"
+                  className="file-input w-full max-w-sm hover:input-warning"
                 />
-                {errors.photo && (
-                  <span className="text-red-600">Photo URL is required</span>
-                )}
-              </div> */}
-              <div className="form-control">
+              </div>
+
+              <div className="form-control mb-4">
                 <label className="label">
                   <span className="label-text">Email</span>
                 </label>
                 <input
                   type="email"
                   {...register("email", { required: true })}
-                  placeholder="email"
+                  placeholder="Email"
                   className="input input-bordered"
                 />
                 {errors.email && (
-                  <span className="text-red-600">Email is required</span>
+                  <span className="text-red-600 text-sm">Email is required</span>
                 )}
               </div>
 
-              <div className="form-control">
+              <div className="form-control mb-6">
                 <label className="label">
                   <span className="label-text">Password</span>
                 </label>
@@ -139,35 +127,35 @@ const SignUp = () => {
                     minLength: 6,
                     maxLength: 10,
                   })}
-                  placeholder="password"
+                  placeholder="Password"
                   className="input input-bordered"
                 />
-                {errors.password?.type == "required" && (
-                  <span className="text-red-600">Password is required</span>
+                {errors.password?.type === "required" && (
+                  <span className="text-red-600 text-sm">Password is required</span>
                 )}
-                {errors.password?.type == "minLength" && (
-                  <span className="text-red-600">
-                    Password must be 6 characters.
+                {errors.password?.type === "minLength" && (
+                  <span className="text-red-600 text-sm">
+                    Password must be at least 6 characters.
                   </span>
                 )}
-                {errors.password?.type == "maxLength" && (
-                  <span className="text-red-600">
+                {errors.password?.type === "maxLength" && (
+                  <span className="text-red-600 text-sm">
                     Password must be less than 10 characters.
                   </span>
                 )}
               </div>
 
-              <div className="form-control mt-6">
+              <div className="form-control mb-6">
                 <input
-                  className="btn btn-primary"
+                  className="btn btn-primary w-full"
                   type="submit"
                   value="SIGNUP"
                 />
               </div>
             </form>
-            <div>
-              <p className="text-center pb-7">
-                Already signup? Please
+            <div className="text-center pb-7">
+              <p>
+                Already signed up? Please
                 <Link to={"/login"}>
                   <span className="text-blue-500"> LOGIN</span>
                 </Link>

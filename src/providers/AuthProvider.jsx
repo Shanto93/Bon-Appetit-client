@@ -21,33 +21,95 @@ const AuthProvider = ({ children }) => {
   const googleProvider = new GoogleAuthProvider();
   const axiosPublic = useAxiosPublic();
 
-  const googleSignIn = () => {
-    setLoading(true);
-    return signInWithPopup(auth, googleProvider);
+  const googleSignIn = async () => {
+    try {
+      setLoading(true);
+      const result = await signInWithPopup(auth, googleProvider);
+      return result;
+    } catch (error) {
+      console.error("Google Sign-In Error: ", error);
+      throw error;
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const createUser = (email, password) => {
-    setLoading(true);
-    return createUserWithEmailAndPassword(auth, email, password);
+  const createUser = async (email, password) => {
+    try {
+      setLoading(true);
+      const result = await createUserWithEmailAndPassword(auth, email, password);
+      return result;
+    } catch (error) {
+      console.error("Create User Error: ", error);
+      throw error;
+    } finally {
+      setLoading(false);
+    }
   };
 
-  const updateUser = (name, photo) => {
-    setLoading(true);
-    return updateProfile(auth.currentUser, {
-      displayName: name,
-      photoURL: photo,
+  const updateUser = async (name, photo) => {
+    try {
+      setLoading(true);
+      await updateProfile(auth.currentUser, {
+        displayName: name,
+        photoURL: photo,
+      });
+    } catch (error) {
+      console.error("Update User Error: ", error);
+      throw error;
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const login = async (email, password) => {
+    try {
+      setLoading(true);
+      const result = await signInWithEmailAndPassword(auth, email, password);
+      return result;
+    } catch (error) {
+      console.error("Login Error: ", error);
+      throw error;
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const logout = async () => {
+    try {
+      setLoading(true);
+      await signOut(auth);
+    } catch (error) {
+      console.error("Logout Error: ", error);
+      throw error;
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    const unsubscribe = onAuthStateChanged(auth, async (currentUser) => {
+      if (currentUser) {
+        try {
+          const userInfo = { email: currentUser.email };
+          const res = await axiosPublic.post("/jwt", userInfo);
+          if (res.data.token) {
+            localStorage.setItem("access-token", res.data.token);
+          }
+        } catch (error) {
+          console.error("Token Fetch Error: ", error);
+        }
+      } else {
+        localStorage.removeItem("access-token");
+      }
+      setUser(currentUser);
+      setLoading(false);
     });
-  };
 
-  const login = (email, password) => {
-    setLoading(true);
-    return signInWithEmailAndPassword(auth, email, password);
-  };
-
-  const logout = () => {
-    setLoading(true);
-    return signOut(auth);
-  };
+    return () => {
+      unsubscribe();
+    };
+  }, [axiosPublic]);
 
   const authInfo = {
     user,
@@ -58,30 +120,6 @@ const AuthProvider = ({ children }) => {
     updateUser,
     googleSignIn,
   };
-
-  useEffect(() => {
-    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-      setUser(currentUser);
-      // console.log(`Currenr user is ${currentUser}`);
-      if (currentUser) {
-        //get token and store client.
-        const userInfo = { email: currentUser.email };
-        axiosPublic.post("/jwt", userInfo).then((res) => {
-          if (res.data.token) {
-            localStorage.setItem("access-token", res.data.token);
-            setLoading(false);
-          }
-        });
-      } else {
-        //remove token(If token stored in the client side: Local Storage,caching,in memory)
-        localStorage.removeItem("access-token");
-      }
-      setLoading(false);
-    });
-    return () => {
-      return unsubscribe();
-    };
-  }, [axiosPublic]);
 
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
