@@ -3,7 +3,6 @@ import useAdmin from "../../../hooks/useAdmin";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 
-
 const UserHome = () => {
   const { user } = useAuth();
   const [isAdmin] = useAdmin();
@@ -22,23 +21,33 @@ const UserHome = () => {
   return (
     <div>
       {/* Other Stats */}
-      <div className="w-full my-10">
-        <div className="stats shadow w-full mx-auto">
-          <div className="stat place-items-center">
-            <div className="stat-title">Total Orders</div>
-            <div className="stat-value">{userData.ordersCount}</div>
+      <div className="w-full my-10 px-4">
+        <div className="flex flex-col md:flex-row stats shadow w-full max-w-4xl mx-auto gap-4">
+          <div className="stat place-items-center p-4 bg-white rounded-lg shadow-md">
+            <div className="stat-title text-center text-lg md:text-xl font-semibold">
+              Total Orders
+            </div>
+            <div className="stat-value text-center text-2xl md:text-3xl font-bold">
+              {userData.ordersCount}
+            </div>
           </div>
 
-          <div className="stat place-items-center">
-            <div className="stat-title">Total Spent</div>
-            <div className="stat-value text-secondary">
+          <div className="stat place-items-center p-4 bg-white rounded-lg shadow-md">
+            <div className="stat-title text-center text-lg md:text-xl font-semibold">
+              Total Spent
+            </div>
+            <div className="stat-value text-center text-2xl md:text-3xl font-bold text-secondary">
               {userData.totalSpent}$
             </div>
           </div>
 
-          <div className="stat place-items-center">
-            <div className="stat-title">Reviews</div>
-            <div className="stat-value">{userData.totalReviews}</div>
+          <div className="stat place-items-center p-4 bg-white rounded-lg shadow-md">
+            <div className="stat-title text-center text-lg md:text-xl font-semibold">
+              Reviews
+            </div>
+            <div className="stat-value text-center text-2xl md:text-3xl font-bold">
+              {userData.totalReviews}
+            </div>
           </div>
         </div>
       </div>

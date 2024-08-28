@@ -49,88 +49,82 @@ const Cart = () => {
   };
 
   return (
-    <div>
-      <div>
-        <SectionTitle
-          heading={"MANAGE ITEMS"}
-          subheading={"---Hurry Up!---"}
-        ></SectionTitle>
-      </div>
+    <div className="p-4 md:p-6 lg:p-8">
+      <SectionTitle
+        heading={"My Cart ITEMS"}
+        subheading={"---Hurry Up!---"}
+      />
 
       {/* Header Content */}
-      <div className="flex justify-between">
-        <p className="text-2xl font-semibold">Items: {cart.length}</p>
-        <p className="text-2xl font-semibold">
-          Total Price:
-          {cart.reduce((total, item) => total + item.price, 0)}
+      <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-6">
+        <p className="text-lg md:text-2xl font-semibold mb-2 md:mb-0">
+          Items: {cart.length}
         </p>
-        {cart.length > 0 ? (
-          <Link to="/dashboard/payment">
-            <button className="btn btn-ghost text-xl font-semibold bg-blue-700 text-white">
-              Pay
-            </button>
-          </Link>
-        ) : (
+        <p className="text-lg md:text-2xl font-semibold mb-2 md:mb-0">
+          Total Price: ${cart.reduce((total, item) => total + item.price, 0)}
+        </p>
+        <Link to="/dashboard/payment">
           <button
-            disabled
-            className="btn btn-ghost text-xl font-semibold bg-blue-700 text-white"
+            className={`btn btn-ghost text-lg md:text-xl font-semibold bg-blue-700 text-white ${
+              cart.length > 0 ? "" : "opacity-50 cursor-not-allowed"
+            }`}
+            disabled={cart.length === 0}
           >
             Pay
           </button>
-        )}
+        </Link>
       </div>
 
       {/* Table Content */}
-      <div>
-        <div className="overflow-x-auto">
-          <table className="table">
-            {/* head */}
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Image</th>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {currentItems.map((item, index) => (
-                <tr key={item._id}>
-                  <th>
-                    <label>{indexOfFirstItem + index + 1}</label>
-                  </th>
-                  <td>
-                    <div className="flex items-center gap-3">
-                      <div className="avatar">
-                        <div className="mask mask-squircle h-12 w-12">
-                          <img
-                            src={item.image}
-                            alt="Avatar Tailwind CSS Component"
-                          />
-                        </div>
+      <div className="overflow-x-auto">
+        <table className="table w-full border border-gray-200 rounded-lg">
+          {/* head */}
+          <thead>
+            <tr className="bg-gray-100">
+              <th className="p-2">#</th>
+              <th className="p-2">Image</th>
+              <th className="p-2">Name</th>
+              <th className="p-2">Price</th>
+              <th className="p-2">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            {currentItems.map((item, index) => (
+              <tr key={item._id}>
+                <th className="p-2">
+                  <label>{indexOfFirstItem + index + 1}</label>
+                </th>
+                <td className="p-2">
+                  <div className="flex items-center justify-center">
+                    <div className="avatar">
+                      <div className="mask mask-squircle h-12 w-12">
+                        <img
+                          src={item.image}
+                          alt="Avatar Tailwind CSS Component"
+                          className="object-cover"
+                        />
                       </div>
                     </div>
-                  </td>
-                  <td>
-                    <span className="font-bold">{item.name}</span>
-                  </td>
-                  <td>
-                    <span className="font-semibold">$ {item.price}</span>
-                  </td>
-                  <th>
-                    <button
-                      onClick={() => handleDeleteCartItem(item._id)}
-                      className="btn btn-ghost"
-                    >
-                      <FaTrashAlt className="text-3xl text-red-700 hover:text-blue-700" />
-                    </button>
-                  </th>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+                  </div>
+                </td>
+                <td className="p-2">
+                  <span className="font-bold">{item.name}</span>
+                </td>
+                <td className="p-2">
+                  <span className="font-semibold">${item.price}</span>
+                </td>
+                <td className="p-2 text-center">
+                  <button
+                    onClick={() => handleDeleteCartItem(item._id)}
+                    className="btn btn-ghost p-1"
+                  >
+                    <FaTrashAlt className="text-xl text-red-700 hover:text-red-500" />
+                  </button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
       </div>
 
       {/* Pagination */}
@@ -141,12 +135,12 @@ const Cart = () => {
               <li
                 key={index}
                 className={`page-item ${
-                  currentPage === index + 1 ? "active" : ""
+                  currentPage === index + 1 ? "bg-blue-700 text-white" : ""
                 }`}
               >
                 <button
                   onClick={() => paginate(index + 1)}
-                  className="btn btn-ghost"
+                  className="btn btn-ghost px-3 py-1 rounded"
                 >
                   {index + 1}
                 </button>
