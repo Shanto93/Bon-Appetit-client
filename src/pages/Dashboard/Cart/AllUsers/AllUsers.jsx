@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import SectionTitle from "../../../../components/SectionTitle/SectionTitle";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
@@ -6,6 +7,8 @@ import Swal from "sweetalert2";
 
 const AllUsers = () => {
   const axiosSecure = useAxiosSecure();
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5;
 
   const { data: users = [], refetch } = useQuery({
     queryKey: ["users"],
@@ -14,6 +17,8 @@ const AllUsers = () => {
       return res.data;
     },
   });
+
+  const totalPages = Math.ceil(users.length / itemsPerPage);
 
   const handleDelete = (user) => {
     Swal.fire({
@@ -56,6 +61,92 @@ const AllUsers = () => {
     });
   };
 
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  const renderPagination = () => {
+    const pages = [];
+    if (currentPage > 1) {
+      pages.push(
+        <button
+          key="prev"
+          onClick={() => handlePageChange(currentPage - 1)}
+          className="btn mx-1"
+        >
+          Previous
+        </button>
+      );
+    }
+
+    pages.push(
+      <button
+        key={1}
+        onClick={() => handlePageChange(1)}
+        className={`btn mx-1 ${currentPage === 1 ? "btn-active" : ""}`}
+      >
+        1
+      </button>
+    );
+
+    if (currentPage > 3) {
+      pages.push(<span key="dots1">...</span>);
+    }
+
+    const startPage = Math.max(2, currentPage - 1);
+    const endPage = Math.min(totalPages - 1, currentPage + 1);
+
+    for (let i = startPage; i <= endPage; i++) {
+      pages.push(
+        <button
+          key={i}
+          onClick={() => handlePageChange(i)}
+          className={`btn mx-1 ${currentPage === i ? "btn-active" : ""}`}
+        >
+          {i}
+        </button>
+      );
+    }
+
+    if (currentPage < totalPages - 2) {
+      pages.push(<span key="dots2">...</span>);
+    }
+
+    if (totalPages > 1) {
+      pages.push(
+        <button
+          key={totalPages}
+          onClick={() => handlePageChange(totalPages)}
+          className={`btn mx-1 ${
+            currentPage === totalPages ? "btn-active" : ""
+          }`}
+        >
+          {totalPages}
+        </button>
+      );
+    }
+
+    if (currentPage < totalPages) {
+      pages.push(
+        <button
+          key="next"
+          onClick={() => handlePageChange(currentPage + 1)}
+          className="btn mx-1"
+        >
+          Next
+        </button>
+      );
+    }
+
+    return pages;
+  };
+
+  // Get current users
+  const currentUsers = users.slice(
+    (currentPage - 1) * itemsPerPage,
+    currentPage * itemsPerPage
+  );
+
   return (
     <div>
       <div>
@@ -65,7 +156,7 @@ const AllUsers = () => {
         ></SectionTitle>
 
         <h2 className="text-2xl font-semibold mb-5">
-          TOTAL USERS: {users.length}{" "}
+          TOTAL USERS: {users.length}
         </h2>
       </div>
 
@@ -84,11 +175,11 @@ const AllUsers = () => {
               </tr>
             </thead>
             <tbody>
-              {users.map((user, index) => (
-                <tr key={index}>
-                  <th>{index + 1} </th>
-                  <td>{user.name} </td>
-                  <td>{user.email} </td>
+              {currentUsers.map((user, index) => (
+                <tr key={user._id}>
+                  <th>{(currentPage - 1) * itemsPerPage + index + 1}</th>
+                  <td>{user.name}</td>
+                  <td>{user.email}</td>
                   <td>
                     {user.role === "admin" ? (
                       "Admin"
@@ -113,6 +204,11 @@ const AllUsers = () => {
               ))}
             </tbody>
           </table>
+
+          {/* Pagination Controls */}
+          <div className="flex justify-center mt-4">
+            {renderPagination()}
+          </div>
         </div>
       </div>
     </div>
