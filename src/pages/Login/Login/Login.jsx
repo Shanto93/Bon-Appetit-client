@@ -63,7 +63,7 @@ const Login = () => {
       <div className="hero bg-base-200 min-h-screen">
         <div className="hero-content flex-col lg:flex-row">
           <div className="text-center lg:text-left">
-            <h1 className="md:text-5xl font-bold mb-5 text-center">
+            <h1 className="text-3xl md:text-5xl font-bold mb-5 text-center">
               Login now!
             </h1>
             <img src={loginImg} alt="Authentication Image" />
