@@ -1,61 +1,45 @@
-import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
-// import { Carousel } from 'react-responsive-carousel';
+import { useState, useRef } from "react";
+import "react-responsive-carousel/lib/styles/carousel.min.css";
+import { GoMute, GoUnmute } from "react-icons/go";
 
-// import img1 from './../../../assets/home/01.jpg'
-// import img2 from './../../../assets/home/02.jpg'
-// import img3 from './../../../assets/home/03.png'
-// import img4 from './../../../assets/home/04.jpg'
-// import img5 from './../../../assets/home/05.png'
-// import img6 from './../../../assets/home/06.png'
-
-import bannerContent from './../../../assets/home/BannerVideo.mp4'
-import './banner.css'
-import { motion } from 'framer-motion';
+import bannerContent from "./../../../assets/home/BannerVideo.mp4";
+import "./banner.css";
 
 const Banner = () => {
-    return (
-        // <Carousel>
-        //         <div>
-        //             <img src={img1} />
-        //         </div>
-        //         <div>
-        //             <img src={img2} />
-        //         </div>
-        //         <div>
-        //             <img src={img3} />
-        //         </div>
-        //         <div>
-        //             <img src={img4} />
-        //         </div>
-        //         <div>
-        //             <img src={img5} />
-        //         </div>
-        //         <div>
-        //             <img src={img6} />
-        //         </div>
-        //     </Carousel>
+  const [isMuted, setIsMuted] = useState(true);
+  const videoRef = useRef(null);
 
-        <div className='videoContainer'>
-            <div className='overlay max-w-screen-lg'></div>
-            <motion.video
-            initial={{ x: 100, opacity: 0 }}
-            whileInView={{ x: 0, opacity: 1 }}
-            transition={{
-              delay: 0.2,
-              x: { type: 'spring', stiffness: 60 },
-              opacity: { duration: 1 },
-              ease: "easeIn",
-              duration: 1,
-            }}
-             src={bannerContent} autoPlay loop muted></motion.video>
-            <div className='content max-w-screen-lg gap-y-4'>
-                {/* <h2 className='fontStyle text-2xl f font-bold text-yellow-400'>REGGIE NEBULON COSMIC CHRONICLES</h2>
-                <h1 className='fontStyle text-5xl font-bold text-white font-mono'>MISADVENTURES</h1>
-                <h1 className='fontStyle text-5xl font-bold text-white font-mono'>OF A GALACTIC GADGETEER</h1> */}
-                {/* <button className='neon'>START STORY</button> */}
-            </div>
-        </div>
-    );
+  const toggleMute = () => {
+    if (videoRef.current) {
+      videoRef.current.muted = !isMuted;
+      setIsMuted(!isMuted);
+    }
+  };
+
+  return (
+    <div className="videoContainer">
+      <div className="overlay max-w-screen-lg scale-animation"></div>
+      <video
+        src={bannerContent}
+        autoPlay
+        loop
+        muted={isMuted}
+        ref={videoRef}
+      ></video>
+      <div className="content max-w-screen-lg gap-y-4">
+        {/* <button className="neon absolute bottom-5 bg-orange-600 px-3 py-2 rounded-lg right-5 hover:bg-green-600 text-white scale-animation" onClick={toggleMute}>
+          {isMuted ? "Unmute" : "Mute"}
+        </button> */}
+
+
+        <button className="absolute bottom-5 right-5 btn btn-outline mt-4 border-0 border-b-4 rounded-lg border-orange-500 hover:border-orange-500 bg-black text-white" onClick={toggleMute}>
+        {isMuted ? <GoUnmute className="text-3xl hover:text-orange-600 hover:border-orange-600" /> : <GoMute className="text-3xl hover:text-orange-700 hover:border-orange-600"/>}
+          </button>
+
+
+      </div>
+    </div>
+  );
 };
 
 export default Banner;

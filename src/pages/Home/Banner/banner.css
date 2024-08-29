@@ -33,3 +33,20 @@ video{
   font-optical-sizing: auto;
   font-style: normal;
 }
+
+/* Animation */
+
+@keyframes scaleUp {
+    from {
+      transform: scale(0.8);
+    }
+    to {
+      transform: scale(1);
+    }
+  }
+  
+  .scale-animation {
+    animation: scaleUp 1.5s ease-out infinite;
+  }
+  
+  
