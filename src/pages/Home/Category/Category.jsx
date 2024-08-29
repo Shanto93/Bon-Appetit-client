@@ -33,7 +33,7 @@ const Category = () => {
           slideShadows: true,
         }}
         autoplay={{
-          delay: 2500,
+          delay: 1000,
           disableOnInteraction: false,
         }}
         loop={true} // Enable infinite looping

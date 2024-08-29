@@ -1,0 +1,30 @@
+@keyframes typewriter {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+  
+  @keyframes blink {
+    0%, 100% {
+      border-color: transparent;
+    }
+    50% {
+      border-color: currentColor;
+    }
+  }
+  
+  .typewriter {
+    display: inline-block;
+    overflow: hidden;
+    white-space: nowrap;
+    
+    animation: 
+      typewriter 4s steps(40, end) 1s 1 normal both,
+      blink 3500ms step-start infinite;
+    width: 0;
+    
+  }
+  
