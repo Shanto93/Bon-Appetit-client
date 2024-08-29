@@ -1,7 +1,8 @@
 import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import "swiper/css/pagination";
-import { Pagination } from "swiper/modules";
+import "swiper/css/effect-coverflow"; // Import the Coverflow effect CSS
+import { Pagination, EffectCoverflow, Autoplay } from "swiper/modules"; // Import the Coverflow effect module
 
 import slide1 from "../../../assets/home/slide1.jpg";
 import slide2 from "../../../assets/home/slide2.jpg";
@@ -13,26 +14,29 @@ import SectionTitle from "../../../components/SectionTitle/SectionTitle";
 const Category = () => {
   return (
     <section>
-        <SectionTitle
+      <SectionTitle
         subheading={"---From 11.00am to 10 pm---"}
         heading={"Order Online"}
-        >
-        </SectionTitle>
-      {/* <Swiper
-        slidesPerView={3}
-        spaceBetween={30}
-        centeredSlides={true}
-        pagination={{
-          clickable: true,
-        }}
-        modules={[Pagination]}
-        className="mySwiper mb-16"
-      > */}
+      ></SectionTitle>
 
-<Swiper
+      <Swiper
+        effect="coverflow" // Apply the Coverflow effect
+        grabCursor={true}
+        centeredSlides={true}
         slidesPerView={2} // Default for mobile
         spaceBetween={5} // Reduced space between slides on mobile
-        centeredSlides={true}
+        coverflowEffect={{
+          rotate: 50,
+          stretch: 0,
+          depth: 100,
+          modifier: 1,
+          slideShadows: true,
+        }}
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
+        loop={true} // Enable infinite looping
         pagination={{
           clickable: true,
         }}
@@ -46,12 +50,9 @@ const Category = () => {
             spaceBetween: 20,
           },
         }}
-        modules={[Pagination]}
+        modules={[Pagination, EffectCoverflow, Autoplay]} // Include the necessary modules
         className="mySwiper mb-16"
       >
-
-
-
         <SwiperSlide>
           <img src={slide1} alt="Category Photo" />
           <h3 className="md:text-4xl text-center uppercase -mt-16 text-white">

@@ -10,6 +10,7 @@ import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a lo
 
 import bannerContent from './../../../assets/home/BannerVideo.mp4'
 import './banner.css'
+import { motion } from 'framer-motion';
 
 const Banner = () => {
     return (
@@ -36,7 +37,17 @@ const Banner = () => {
 
         <div className='videoContainer'>
             <div className='overlay max-w-screen-lg'></div>
-            <video src={bannerContent} autoPlay loop muted></video>
+            <motion.video
+            initial={{ x: 100, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{
+              delay: 0.2,
+              x: { type: 'spring', stiffness: 60 },
+              opacity: { duration: 1 },
+              ease: "easeIn",
+              duration: 1,
+            }}
+             src={bannerContent} autoPlay loop muted></motion.video>
             <div className='content max-w-screen-lg gap-y-4'>
                 {/* <h2 className='fontStyle text-2xl f font-bold text-yellow-400'>REGGIE NEBULON COSMIC CHRONICLES</h2>
                 <h1 className='fontStyle text-5xl font-bold text-white font-mono'>MISADVENTURES</h1>
