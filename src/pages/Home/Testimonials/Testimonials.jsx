@@ -13,7 +13,7 @@ const Testimonials = () => {
   const [reviews, getReviews] = useState([]);
 
   useEffect(() => {
-    fetch("https://bistro-boss-server-tau-topaz.vercel.app/reviews")
+    fetch("http://localhost:5000/reviews")
       .then((res) => res.json())
       .then((data) => getReviews(data));
   }, []);
