@@ -4,6 +4,7 @@ import SectionTitle from "../../../../components/SectionTitle/SectionTitle";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import { FaTrashAlt, FaUsers } from "react-icons/fa";
 import Swal from "sweetalert2";
+import { motion } from "framer-motion";
 
 const AllUsers = () => {
   const axiosSecure = useAxiosSecure();
@@ -155,9 +156,20 @@ const AllUsers = () => {
           subheading="---How many??---"
         ></SectionTitle>
 
-        <h2 className="text-2xl font-semibold mb-5">
+        <motion.h2
+          initial={{ x: -100, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          transition={{
+            delay: 0.8,
+            x: { type: "spring", stiffness: 60 },
+            opacity: { duration: 1 },
+            ease: "easeIn",
+            duration: 1,
+          }}
+          className="text-2xl font-semibold mb-5"
+        >
           TOTAL USERS: {users.length}
-        </h2>
+        </motion.h2>
       </div>
 
       {/* Table */}
@@ -167,20 +179,126 @@ const AllUsers = () => {
             {/* head */}
             <thead>
               <tr>
-                <th>#</th>
-                <th>NAME</th>
-                <th>EMAIL</th>
-                <th>ROLE</th>
-                <th>ACTION</th>
+                <motion.th
+                  initial={{ x: 100, opacity: 0 }}
+                  whileInView={{ x: 0, opacity: 1 }}
+                  transition={{
+                    delay: 0.2,
+                    x: { type: "spring", stiffness: 60 },
+                    opacity: { duration: 1 },
+                    ease: "easeIn",
+                    duration: 1,
+                  }}
+                >
+                  #
+                </motion.th>
+                <motion.th
+                  initial={{ x: 100, opacity: 0 }}
+                  whileInView={{ x: 0, opacity: 1 }}
+                  transition={{
+                    delay: 0.4,
+                    x: { type: "spring", stiffness: 60 },
+                    opacity: { duration: 1 },
+                    ease: "easeIn",
+                    duration: 1,
+                  }}
+                >
+                  NAME
+                </motion.th>
+                <motion.th
+                  initial={{ x: 100, opacity: 0 }}
+                  whileInView={{ x: 0, opacity: 1 }}
+                  transition={{
+                    delay: 0.6,
+                    x: { type: "spring", stiffness: 60 },
+                    opacity: { duration: 1 },
+                    ease: "easeIn",
+                    duration: 1,
+                  }}
+                >
+                  EMAIL
+                </motion.th>
+                <motion.th
+                  initial={{ x: -100, opacity: 0 }}
+                  whileInView={{ x: 0, opacity: 1 }}
+                  transition={{
+                    delay: 0.8,
+                    x: { type: "spring", stiffness: 60 },
+                    opacity: { duration: 1 },
+                    ease: "easeIn",
+                    duration: 1,
+                  }}
+                >
+                  ROLE
+                </motion.th>
+                <motion.th
+                  initial={{ x: -100, opacity: 0 }}
+                  whileInView={{ x: 0, opacity: 1 }}
+                  transition={{
+                    delay: 1,
+                    x: { type: "spring", stiffness: 60 },
+                    opacity: { duration: 1 },
+                    ease: "easeIn",
+                    duration: 1,
+                  }}
+                >
+                  ACTION
+                </motion.th>
               </tr>
             </thead>
             <tbody>
               {currentUsers.map((user, index) => (
                 <tr key={user._id}>
-                  <th>{(currentPage - 1) * itemsPerPage + index + 1}</th>
-                  <td>{user.name}</td>
-                  <td>{user.email}</td>
-                  <td>
+                  <motion.th
+                    initial={{ x: 100, opacity: 0 }}
+                    whileInView={{ x: 0, opacity: 1 }}
+                    transition={{
+                      delay: 1,
+                      x: { type: "spring", stiffness: 60 },
+                      opacity: { duration: 1 },
+                      ease: "easeIn",
+                      duration: 1,
+                    }}
+                  >
+                    {(currentPage - 1) * itemsPerPage + index + 1}
+                  </motion.th>
+                  <motion.td
+                    initial={{ x: 100, opacity: 0 }}
+                    whileInView={{ x: 0, opacity: 1 }}
+                    transition={{
+                      delay: 1.2,
+                      x: { type: "spring", stiffness: 60 },
+                      opacity: { duration: 1 },
+                      ease: "easeIn",
+                      duration: 1,
+                    }}
+                  >
+                    {user.name}
+                  </motion.td>
+                  <motion.td
+                    initial={{ x: 100, opacity: 0 }}
+                    whileInView={{ x: 0, opacity: 1 }}
+                    transition={{
+                      delay: 1.4,
+                      x: { type: "spring", stiffness: 60 },
+                      opacity: { duration: 1 },
+                      ease: "easeIn",
+                      duration: 1,
+                    }}
+                  >
+                    {user.email}
+                  </motion.td>
+                  <motion.td
+                    initial={{ x: 100, opacity: 0 }}
+                    whileInView={{ x: 0, opacity: 1 }}
+                    transition={{
+                      delay: 1.6,
+                      x: { type: "spring", stiffness: 60 },
+                      opacity: { duration: 1 },
+                      ease: "easeIn",
+                      duration: 1,
+                    }}
+                  >
                     {user.role === "admin" ? (
                       "Admin"
                     ) : (
@@ -191,24 +309,32 @@ const AllUsers = () => {
                         <FaUsers className="text-3xl text-white hover:text-blue-700" />
                       </button>
                     )}
-                  </td>
-                  <td>
+                  </motion.td>
+                  <motion.td
+                    initial={{ x: 100, opacity: 0 }}
+                    whileInView={{ x: 0, opacity: 1 }}
+                    transition={{
+                      delay: 1.8,
+                      x: { type: "spring", stiffness: 60 },
+                      opacity: { duration: 1 },
+                      ease: "easeIn",
+                      duration: 1,
+                    }}
+                  >
                     <button
                       onClick={() => handleDelete(user)}
                       className="btn btn-ghost"
                     >
                       <FaTrashAlt className="text-3xl text-red-700 hover:text-blue-700" />
                     </button>
-                  </td>
+                  </motion.td>
                 </tr>
               ))}
             </tbody>
           </table>
 
           {/* Pagination Controls */}
-          <div className="flex justify-center mt-4">
-            {renderPagination()}
-          </div>
+          <div className="flex justify-center mt-4">{renderPagination()}</div>
         </div>
       </div>
     </div>
