@@ -6,6 +6,7 @@ import useMenu from "../../../hooks/useMenu";
 import Swal from "sweetalert2";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const ManageItems = () => {
   const [menu, , refetch] = useMenu();
@@ -144,55 +145,131 @@ const ManageItems = () => {
           <table className="table w-full">
             {/* head */}
             <thead>
-              <tr>
+              <motion.tr
+                initial={{ x: -100, opacity: 0 }}
+                whileInView={{ x: 0, opacity: 1 }}
+                transition={{
+                  delay: 0.2,
+                  x: { type: "spring", stiffness: 60 },
+                  opacity: { duration: 1 },
+                  ease: "easeIn",
+                  duration: 1,
+                }}
+              >
                 <th>#</th>
                 <th>Image</th>
                 <th>Item Name</th>
                 <th>Price</th>
                 <th>Update</th>
                 <th>Delete</th>
-              </tr>
+              </motion.tr>
             </thead>
             <tbody>
               {currentItems.map((item, index) => (
                 <tr key={index}>
-                  <th>{(currentPage - 1) * itemsPerPage + index + 1}</th>
+                  <motion.th
+                    initial={{ x: 100, opacity: 0 }}
+                    whileInView={{ x: 0, opacity: 1 }}
+                    transition={{
+                      delay: 0.2,
+                      x: { type: "spring", stiffness: 60 },
+                      opacity: { duration: 1 },
+                      ease: "easeIn",
+                      duration: 1,
+                    }}
+                  >
+                    {(currentPage - 1) * itemsPerPage + index + 1}
+                  </motion.th>
                   <td>
                     <div className="flex items-center gap-3">
                       <div className="avatar">
-                        <div className="mask mask-squircle h-12 w-12">
+                        <motion.div
+                          initial={{ x: 100, opacity: 0 }}
+                          whileInView={{ x: 0, opacity: 1 }}
+                          transition={{
+                            delay: 0.4,
+                            x: { type: "spring", stiffness: 60 },
+                            opacity: { duration: 1 },
+                            ease: "easeIn",
+                            duration: 1,
+                          }}
+                          className="mask mask-squircle h-12 w-12"
+                        >
                           <img src={item.image} alt="Menu Items Picture" />
-                        </div>
+                        </motion.div>
                       </div>
                     </div>
                   </td>
 
-                  <td>{item.name} </td>
-                  <td className="font-bold">${item.price} </td>
-                  <th>
+                  <motion.td
+                    initial={{ x: 100, opacity: 0 }}
+                    whileInView={{ x: 0, opacity: 1 }}
+                    transition={{
+                      delay: 0.6,
+                      x: { type: "spring", stiffness: 60 },
+                      opacity: { duration: 1 },
+                      ease: "easeIn",
+                      duration: 1,
+                    }}
+                  >
+                    {item.name}{" "}
+                  </motion.td>
+                  <motion.td
+                    initial={{ x: 100, opacity: 0 }}
+                    whileInView={{ x: 0, opacity: 1 }}
+                    transition={{
+                      delay: 0.8,
+                      x: { type: "spring", stiffness: 60 },
+                      opacity: { duration: 1 },
+                      ease: "easeIn",
+                      duration: 1,
+                    }}
+                    className="font-bold"
+                  >
+                    ${item.price}{" "}
+                  </motion.td>
+                  <motion.th
+                    initial={{ x: 100, opacity: 0 }}
+                    whileInView={{ x: 0, opacity: 1 }}
+                    transition={{
+                      delay: 1,
+                      x: { type: "spring", stiffness: 60 },
+                      opacity: { duration: 1 },
+                      ease: "easeIn",
+                      duration: 1,
+                    }}
+                  >
                     <Link to={`/dashboard/updateItem/${item._id}`}>
                       <button className="btn btn-ghost">
                         <CiEdit className="text-3xl text-yellow-700 hover:text-blue-700" />
                       </button>
                     </Link>
-                  </th>
-                  <th>
+                  </motion.th>
+                  <motion.th
+                    initial={{ x: 100, opacity: 0 }}
+                    whileInView={{ x: 0, opacity: 1 }}
+                    transition={{
+                      delay: 1.2,
+                      x: { type: "spring", stiffness: 60 },
+                      opacity: { duration: 1 },
+                      ease: "easeIn",
+                      duration: 1,
+                    }}
+                  >
                     <button
                       onClick={() => handleDeleteItem(item)}
                       className="btn btn-ghost"
                     >
                       <FaTrashAlt className="text-3xl text-red-700 hover:text-blue-700" />
                     </button>
-                  </th>
+                  </motion.th>
                 </tr>
               ))}
             </tbody>
           </table>
 
           {/* Pagination Controls */}
-          <div className="flex justify-center mt-4">
-            {renderPagination()}
-          </div>
+          <div className="flex justify-center mt-4">{renderPagination()}</div>
         </div>
       </div>
     </div>
