@@ -5,6 +5,7 @@ import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import { useForm } from "react-hook-form";
 import { FaUtensils } from "react-icons/fa";
 import Swal from "sweetalert2";
+import { motion } from "framer-motion";
 
 const Image_Hosting_Key = import.meta.env.VITE_image_hosting_api;
 const Image_Hosting_API = `https://api.imgbb.com/1/upload?key=${Image_Hosting_Key}`;
@@ -53,12 +54,34 @@ const UpdateMenuItem = () => {
       {/* Form Part */}
       <div className="hero bg-base-200 min-h-full">
         <div className="hero-content w-full">
-          <div className="card w-full bg-base-200 shadow-2xl">
+          <motion.div
+            initial={{ y: -100, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{
+              delay: 0.2,
+              x: { type: "spring", stiffness: 60 },
+              opacity: { duration: 1 },
+              ease: "easeIn",
+              duration: 1,
+            }}
+            className="card w-full bg-base-200 shadow-2xl"
+          >
             <form
               onSubmit={handleSubmit(onSubmit)}
               className="card-body w-full"
             >
-              <div className="form-control">
+              <motion.div
+                initial={{ y: 100, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{
+                  delay: 0.2,
+                  x: { type: "spring", stiffness: 60 },
+                  opacity: { duration: 1 },
+                  ease: "easeIn",
+                  duration: 1,
+                }}
+                className="form-control"
+              >
                 <label className="label">
                   <span className="label-text">Recipe name*</span>
                 </label>
@@ -69,11 +92,22 @@ const UpdateMenuItem = () => {
                   placeholder="Recipe name"
                   className="input hover:input-warning input-bordered"
                 />
-              </div>
+              </motion.div>
 
               {/* double field part */}
               <div className="grid grid-cols-1 md:grid-cols-2 md:gap-4">
-                <div className="form-control">
+                <motion.div
+                  initial={{ y: 100, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  transition={{
+                    delay: 0.4,
+                    x: { type: "spring", stiffness: 60 },
+                    opacity: { duration: 1 },
+                    ease: "easeIn",
+                    duration: 1,
+                  }}
+                  className="form-control"
+                >
                   <label className="label">
                     <span className="label-text">Category*</span>
                   </label>
@@ -91,9 +125,20 @@ const UpdateMenuItem = () => {
                     <option>desserts</option>
                     <option>drinks</option>
                   </select>
-                </div>
+                </motion.div>
 
-                <div className="form-control">
+                <motion.div
+                  initial={{ y: 100, opacity: 0 }}
+                  whileInView={{ y: 0, opacity: 1 }}
+                  transition={{
+                    delay: 0.6,
+                    x: { type: "spring", stiffness: 60 },
+                    opacity: { duration: 1 },
+                    ease: "easeIn",
+                    duration: 1,
+                  }}
+                  className="form-control"
+                >
                   <label className="label">
                     <span className="label-text">Price*</span>
                   </label>
@@ -104,11 +149,21 @@ const UpdateMenuItem = () => {
                     placeholder="Price"
                     className="input hover:input-warning input-bordered"
                   />
-                </div>
+                </motion.div>
               </div>
 
               {/* Textarea field */}
-              <div>
+              <motion.div
+                initial={{ y: 100, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{
+                  delay: 0.8,
+                  x: { type: "spring", stiffness: 60 },
+                  opacity: { duration: 1 },
+                  ease: "easeIn",
+                  duration: 1,
+                }}
+              >
                 <label className="label">
                   <span className="label-text">Recipe Details*</span>
                 </label>
@@ -118,21 +173,44 @@ const UpdateMenuItem = () => {
                   className="textarea hover:textarea-warning w-full"
                   placeholder="Recipe Details"
                 ></textarea>
-              </div>
+              </motion.div>
 
               {/* choose file field */}
-              <input
-                {...register("image", { required: true })}
-                type="file"
-                className="file-input w-full sm:w-auto hover:input-warning mt-3"
-              />
+              <motion.div
+                initial={{ y: 100, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{
+                  delay: 1,
+                  x: { type: "spring", stiffness: 60 },
+                  opacity: { duration: 1 },
+                  ease: "easeIn",
+                  duration: 1,
+                }}
+              >
+                <input
+                  {...register("image", { required: true })}
+                  type="file"
+                  className="file-input w-full sm:w-auto hover:input-warning mt-3"
+                />
+              </motion.div>
 
               {/* Button area */}
-              <button className="btn bg-yellow-600 w-full sm:w-1/3 mt-3 text-white font-semibold hover:btn-warning">
+              <motion.button
+                initial={{ y: 100, opacity: 0 }}
+                whileInView={{ y: 0, opacity: 1 }}
+                transition={{
+                  delay: 1.2,
+                  x: { type: "spring", stiffness: 60 },
+                  opacity: { duration: 1 },
+                  ease: "easeIn",
+                  duration: 1,
+                }}
+                className="btn bg-yellow-600 w-full sm:w-1/3 mt-3 text-white font-semibold hover:btn-warning"
+              >
                 Update Menu Items <FaUtensils className="ml-2" />
-              </button>
+              </motion.button>
             </form>
-          </div>
+          </motion.div>
         </div>
       </div>
     </div>
