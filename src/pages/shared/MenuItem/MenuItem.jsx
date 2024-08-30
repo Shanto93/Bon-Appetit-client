@@ -62,7 +62,7 @@ const MenuItem = ({ item }) => {
         }}
         className="text-yellow-500 text-center md:text-left text-sm md:text-lg lg:text-xl font-bold"
       >
-        {price}
+        ${price}
       </motion.p>
     </div>
   );

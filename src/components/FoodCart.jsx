@@ -152,7 +152,7 @@ const FoodCart = ({ item }) => {
           className="rounded-md w-full h-36 sm:h-40 md:h-48 object-cover"
         />
         <p className="absolute top-2 right-2 px-2 py-1 bg-slate-400 text-white rounded-md font-semibold hover:text-orange-500 hover:bg-transparent">
-          {price}
+          ${price}
         </p>
       </figure>
       <div className="card-body items-center text-center">

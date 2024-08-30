@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAdmin from "../../../hooks/useAdmin";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
+import { motion } from "framer-motion";
 
 const UserHome = () => {
   const { user } = useAuth();
@@ -23,37 +24,80 @@ const UserHome = () => {
       {/* Other Stats */}
       <div className="w-full my-10 px-4">
         <div className="flex flex-col md:flex-row stats shadow w-full max-w-4xl mx-auto gap-4">
-          <div className="stat place-items-center p-4 bg-white rounded-lg shadow-md">
+          <motion.div
+            initial={{ x: -100, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{
+              delay: 0.8,
+              x: { type: "spring", stiffness: 60 },
+              opacity: { duration: 1 },
+              ease: "easeIn",
+              duration: 1,
+            }}
+            className="stat place-items-center p-4 bg-white rounded-lg shadow-md"
+          >
             <div className="stat-title text-center text-lg md:text-xl font-semibold">
               Total Orders
             </div>
             <div className="stat-value text-center text-2xl md:text-3xl font-bold">
               {userData.ordersCount}
             </div>
-          </div>
+          </motion.div>
 
-          <div className="stat place-items-center p-4 bg-white rounded-lg shadow-md">
+          <motion.div
+            initial={{ y: -40, opacity: 0 }}
+            whileInView={{ y: 0, opacity: 1 }}
+            transition={{
+              delay: 0.2,
+              x: { type: "spring", stiffness: 60 },
+              opacity: { duration: 1 },
+              ease: "easeIn",
+              duration: 1,
+            }}
+            className="stat place-items-center p-4 bg-white rounded-lg shadow-md"
+          >
             <div className="stat-title text-center text-lg md:text-xl font-semibold">
               Total Spent
             </div>
             <div className="stat-value text-center text-2xl md:text-3xl font-bold text-secondary">
               {userData.totalSpent}$
             </div>
-          </div>
+          </motion.div>
 
-          <div className="stat place-items-center p-4 bg-white rounded-lg shadow-md">
+          <motion.div
+            initial={{ x: 100, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{
+              delay: 0.8,
+              x: { type: "spring", stiffness: 60 },
+              opacity: { duration: 1 },
+              ease: "easeIn",
+              duration: 1,
+            }}
+            className="stat place-items-center p-4 bg-white rounded-lg shadow-md"
+          >
             <div className="stat-title text-center text-lg md:text-xl font-semibold">
               Reviews
             </div>
             <div className="stat-value text-center text-2xl md:text-3xl font-bold">
               {userData.totalReviews}
             </div>
-          </div>
+          </motion.div>
         </div>
       </div>
 
       {/* user profile */}
-      <div>
+      <motion.div
+        initial={{ y: 100, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{
+          delay: 0.2,
+          x: { type: "spring", stiffness: 60 },
+          opacity: { duration: 1 },
+          ease: "easeIn",
+          duration: 1,
+        }}
+      >
         <div className="md:w-96 h-72 bg-red-600 bg-opacity-10 border-b-4  border-b-red-600 shadow-xl flex flex-col items-center justify-center mx-auto">
           <div className="flex justify-center">
             {user ? (
@@ -82,7 +126,7 @@ const UserHome = () => {
             </div>
           )}
         </div>
-      </div>
+      </motion.div>
     </div>
   );
 };
