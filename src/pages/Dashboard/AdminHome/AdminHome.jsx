@@ -14,6 +14,7 @@ import {
   Pie,
   Legend,
 } from "recharts";
+import { motion } from "framer-motion";
 
 const colors = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "red", "pink"];
 
@@ -44,7 +45,7 @@ const AdminHome = () => {
   const [chartSize, setChartSize] = useState({ width: 400, height: 400 });
   const [piechartSize, setPieChartSize] = useState({ width: 400, height: 400 });
 
-  // Bara chart size
+  // Bar chart size
   useEffect(() => {
     const updateChartSize = () => {
       if (window.innerWidth < 640) {
@@ -156,12 +157,34 @@ const AdminHome = () => {
 
   return (
     <div className="p-4">
-      <h1 className="text-xl md:text-2xl font-semibold mb-4">
+      <motion.h1
+        initial={{ x: -100, opacity: 0 }}
+        whileInView={{ x: 0, opacity: 1 }}
+        transition={{
+          delay: 0.2,
+          x: { type: "spring", stiffness: 60 },
+          opacity: { duration: 1 },
+          ease: "easeIn",
+          duration: 1,
+        }}
+        className="text-xl md:text-2xl font-semibold mb-4"
+      >
         Hi, Welcome {user.displayName ? user.displayName : "back"}!
-      </h1>
+      </motion.h1>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
-        <div className="stat shadow">
+        <motion.div
+          initial={{ x: -100, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          transition={{
+            delay: 0.2,
+            x: { type: "spring", stiffness: 60 },
+            opacity: { duration: 1 },
+            ease: "easeIn",
+            duration: 1,
+          }}
+          className="stat shadow hover:scale-105 transform transition-transform duration-300"
+        >
           <div className="stat-figure text-3xl text-orange-500">
             <FaDollarSign />
           </div>
@@ -169,9 +192,20 @@ const AdminHome = () => {
             {stats.revenue}
           </div>
           <div className="stat-title">Revenue</div>
-        </div>
+        </motion.div>
 
-        <div className="stat shadow">
+        <motion.div
+          initial={{ y: -100, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{
+            delay: 0.2,
+            x: { type: "spring", stiffness: 60 },
+            opacity: { duration: 1 },
+            ease: "easeIn",
+            duration: 1,
+          }}
+          className="stat shadow hover:scale-105 transform transition-transform duration-300"
+        >
           <div className="stat-figure text-3xl text-orange-500">
             <FaUsers />
           </div>
@@ -179,9 +213,20 @@ const AdminHome = () => {
             {stats.customers}
           </div>
           <div className="stat-title">Customers</div>
-        </div>
+        </motion.div>
 
-        <div className="stat shadow">
+        <motion.div
+          initial={{ y: -100, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{
+            delay: 0.4,
+            x: { type: "spring", stiffness: 60 },
+            opacity: { duration: 1 },
+            ease: "easeIn",
+            duration: 1,
+          }}
+          className="stat shadow hover:scale-105 transform transition-transform duration-300"
+        >
           <div className="stat-figure text-3xl text-orange-500">
             <FaBook />
           </div>
@@ -189,9 +234,20 @@ const AdminHome = () => {
             {stats.products}
           </div>
           <div className="stat-title">Products</div>
-        </div>
+        </motion.div>
 
-        <div className="stat shadow">
+        <motion.div
+          initial={{ x: 100, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          transition={{
+            delay: 0.2,
+            x: { type: "spring", stiffness: 60 },
+            opacity: { duration: 1 },
+            ease: "easeIn",
+            duration: 1,
+          }}
+          className="stat shadow hover:scale-105 transform transition-transform duration-300"
+        >
           <div className="stat-figure text-3xl text-orange-500">
             <FaFirstOrder />
           </div>
@@ -199,11 +255,22 @@ const AdminHome = () => {
             {stats.orders}
           </div>
           <div className="stat-title">Orders</div>
-        </div>
+        </motion.div>
       </div>
 
       <div className="grid grid-cols-1 mt-5 md:gap-20 lg:grid-cols-2">
-        <div className="w-full">
+        <motion.div
+          className="w-full"
+          initial={{ x: -100, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          transition={{
+            delay: 0.2,
+            x: { type: "spring", stiffness: 60 },
+            opacity: { duration: 1 },
+            ease: "easeIn",
+            duration: 1,
+          }}
+        >
           <BarChart
             width={chartSize.width}
             height={chartSize.height}
@@ -230,9 +297,20 @@ const AdminHome = () => {
               ))}
             </Bar>
           </BarChart>
-        </div>
+        </motion.div>
 
-        <div className="w-full">
+        <motion.div
+          className="w-full"
+          initial={{ x: 100, opacity: 0 }}
+        whileInView={{ x: 0, opacity: 1 }}
+        transition={{
+          delay: 1,
+          x: { type: "spring", stiffness: 60 },
+          opacity: { duration: 1 },
+          ease: "easeIn",
+          duration: 1,
+        }}
+        >
           <PieChart
             width={piechartSize.width}
             height={piechartSize.height}
@@ -257,7 +335,7 @@ const AdminHome = () => {
             </Pie>
             <Legend />
           </PieChart>
-        </div>
+        </motion.div>
       </div>
     </div>
   );
