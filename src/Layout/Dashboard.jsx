@@ -13,13 +13,24 @@ import { BiSolidFoodMenu } from "react-icons/bi";
 import { SlCalender } from "react-icons/sl";
 import useCart from "../hooks/useCart";
 import useAdmin from "../hooks/useAdmin";
+import { motion } from 'framer-motion';
 
 const Dashboard = () => {
   const [cart] = useCart();
   const [isAdmin] = useAdmin();
 
   return (
-    <div className="flex flex-col md:flex-row">
+    <motion.div
+    initial={{ y: -100, opacity: 0 }}
+        whileInView={{ y: 0, opacity: 1 }}
+        transition={{
+          delay: 0.2,
+          x: { type: "spring", stiffness: 60 },
+          opacity: { duration: 1 },
+          ease: "easeIn",
+          duration: 1,
+        }} 
+    className="flex flex-col md:flex-row">
       {/* Sidebar */}
       <div className="w-full md:w-64 min-h-fit md:min-h-screen bg-yellow-500 md:fixed md:left-0">
         <ul className="menu p-4 text-center md:text-left">
@@ -106,7 +117,7 @@ const Dashboard = () => {
       <div className="flex-1 mt-8 md:ml-64 p-4">
         <Outlet />
       </div>
-    </div>
+    </motion.div>
   );
 };
 
