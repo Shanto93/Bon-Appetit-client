@@ -5,12 +5,18 @@ import { useState } from "react";
 import useAuth from "../../../hooks/useAuth";
 import useAxiosSecure from "../../../hooks/useAxiosSecure";
 import Swal from "sweetalert2";
+import { motion } from "framer-motion";
 
 const AddReview = () => {
   const { user } = useAuth();
   const axiosSecure = useAxiosSecure();
   const [rating, setRating] = useState(0);
-  const { register, handleSubmit, reset, formState: { errors } } = useForm();
+  const {
+    register,
+    handleSubmit,
+    reset,
+    formState: { errors },
+  } = useForm();
 
   const onSubmit = async (data) => {
     data.rating = rating; // Manually add the rating to the form data
@@ -21,7 +27,7 @@ const AddReview = () => {
       rating: data.rating,
       category: data.category,
       suggestion: data.suggestion,
-      email: user.email
+      email: user.email,
     };
 
     const res = await axiosSecure.post("/reviews", reviewItem);
@@ -56,7 +62,18 @@ const AddReview = () => {
                 >
                   {/* Rating */}
                   <div className="flex justify-center items-center">
-                    <div className="form-control">
+                    <motion.div
+                      initial={{ y: -100, opacity: 0 }}
+                      whileInView={{ y: 0, opacity: 1 }}
+                      transition={{
+                        delay: 0.2,
+                        x: { type: "spring", stiffness: 60 },
+                        opacity: { duration: 1 },
+                        ease: "easeIn",
+                        duration: 1,
+                      }}
+                      className="form-control"
+                    >
                       <label className="label">
                         <span className="label-text text-center w-full text-3xl">
                           Rate Us!
@@ -68,12 +85,22 @@ const AddReview = () => {
                         value={rating}
                         onChange={setRating}
                       />
-                    </div>
-                    
+                    </motion.div>
                   </div>
 
                   {/* Category */}
-                  <div className="form-control w-full">
+                  <motion.div
+                    initial={{ x: 100, opacity: 0 }}
+                    whileInView={{ x: 0, opacity: 1 }}
+                    transition={{
+                      delay: 0.4,
+                      x: { type: "spring", stiffness: 60 },
+                      opacity: { duration: 1 },
+                      ease: "easeIn",
+                      duration: 1,
+                    }}
+                    className="form-control w-full"
+                  >
                     <label className="label">
                       <span className="label-text">
                         Which recipe you liked most?
@@ -93,12 +120,24 @@ const AddReview = () => {
                       <option>desserts</option>
                       <option>drinks</option>
                     </select>
-                    
-                  </div>
-                  {errors.category && <span className="text-red-600">This field is required</span>}
+                  </motion.div>
+                  {errors.category && (
+                    <span className="text-red-600">This field is required</span>
+                  )}
 
                   {/* Suggestion */}
-                  <div className="form-control">
+                  <motion.div
+                    initial={{ x: 100, opacity: 0 }}
+                    whileInView={{ x: 0, opacity: 1 }}
+                    transition={{
+                      delay: 0.6,
+                      x: { type: "spring", stiffness: 60 },
+                      opacity: { duration: 1 },
+                      ease: "easeIn",
+                      duration: 1,
+                    }}
+                    className="form-control"
+                  >
                     <label className="label">
                       <span className="label-text">
                         Do you have any suggestion for us?
@@ -110,12 +149,26 @@ const AddReview = () => {
                       placeholder="Recipe name"
                       className="input hover:input-warning input-bordered"
                     />
-                    {errors.suggestion && <span className="text-red-600">This field is required</span>}
-                  </div>
+                    {errors.suggestion && (
+                      <span className="text-red-600">
+                        This field is required
+                      </span>
+                    )}
+                  </motion.div>
 
                   {/* Details */}
 
-                  <div>
+                  <motion.div
+                    initial={{ x: 100, opacity: 0 }}
+                    whileInView={{ x: 0, opacity: 1 }}
+                    transition={{
+                      delay: 0.8,
+                      x: { type: "spring", stiffness: 60 },
+                      opacity: { duration: 1 },
+                      ease: "easeIn",
+                      duration: 1,
+                    }}
+                  >
                     <label className="label">
                       <span className="label-text">
                         Kindly express your care in a short way.
@@ -126,13 +179,28 @@ const AddReview = () => {
                       className="textarea hover:textarea-warning w-full columns-lg"
                       placeholder="Recipe Details"
                     ></textarea>
-                    {errors.details && <span className="text-red-600">This field is required</span>}
-                  </div>
+                    {errors.details && (
+                      <span className="text-red-600">
+                        This field is required
+                      </span>
+                    )}
+                  </motion.div>
 
                   {/* Button area */}
-                  <button className="btn bg-yellow-600 w-1/3 mt-3 text-white font-semibold hover:btn-warning">
+                  <motion.button
+                    initial={{ x: 100, opacity: 0 }}
+                    whileInView={{ x: 0, opacity: 1 }}
+                    transition={{
+                      delay: 1,
+                      x: { type: "spring", stiffness: 60 },
+                      opacity: { duration: 1 },
+                      ease: "easeIn",
+                      duration: 1,
+                    }}
+                    className="btn bg-yellow-600 w-1/3 mt-3 text-white font-semibold hover:btn-warning"
+                  >
                     Send Review
-                  </button>
+                  </motion.button>
                 </form>
               </div>
             </div>
