@@ -2,6 +2,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../../hooks/useAuth";
 import useAxiosSecure from "../../../../hooks/useAxiosSecure";
 import SectionTitle from "../../../../components/SectionTitle/SectionTitle";
+import { motion } from "framer-motion";
 
 const PaymentHistory = () => {
   const { user } = useAuth();
@@ -17,30 +18,89 @@ const PaymentHistory = () => {
 
   return (
     <div>
-        <SectionTitle
+      <SectionTitle
         heading="Payment History"
         subheading="---See your all transaction history here---"
-        ></SectionTitle>
+      ></SectionTitle>
 
       <div className="overflow-x-auto">
         <table className="table">
           {/* head */}
           <thead>
-            <tr>
+            <motion.tr
+              initial={{ x: -100, opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              transition={{
+                delay: 0.2,
+                x: { type: "spring", stiffness: 60 },
+                opacity: { duration: 1 },
+                ease: "easeIn",
+                duration: 1,
+              }}
+            >
               <th>#</th>
               <th>Price</th>
               <th>Transaction Id</th>
               <th>Status</th>
-            </tr>
+            </motion.tr>
           </thead>
           <tbody>
-            {payments?.map((item,index)=> <tr key={index} className="bg-base-200">
-              <th>{index+1}</th>
-              <td>${item?.price}</td>
-              <td>{item?.transactionId}</td>
-              <td>{item?.status}</td>
-            </tr>)}
-            
+            {payments?.map((item, index) => (
+              <tr key={index} className="bg-base-200">
+                <motion.th
+                  initial={{ x: 100, opacity: 0 }}
+                  whileInView={{ x: 0, opacity: 1 }}
+                  transition={{
+                    delay: 0.2,
+                    x: { type: "spring", stiffness: 60 },
+                    opacity: { duration: 1 },
+                    ease: "easeIn",
+                    duration: 1,
+                  }}
+                >
+                  {index + 1}
+                </motion.th>
+                <motion.td
+                  initial={{ x: 100, opacity: 0 }}
+                  whileInView={{ x: 0, opacity: 1 }}
+                  transition={{
+                    delay: 0.4,
+                    x: { type: "spring", stiffness: 60 },
+                    opacity: { duration: 1 },
+                    ease: "easeIn",
+                    duration: 1,
+                  }}
+                >
+                  ${item?.price}
+                </motion.td>
+                <motion.td
+                  initial={{ x: 100, opacity: 0 }}
+                  whileInView={{ x: 0, opacity: 1 }}
+                  transition={{
+                    delay: 0.6,
+                    x: { type: "spring", stiffness: 60 },
+                    opacity: { duration: 1 },
+                    ease: "easeIn",
+                    duration: 1,
+                  }}
+                >
+                  {item?.transactionId}
+                </motion.td>
+                <motion.td
+                  initial={{ x: 100, opacity: 0 }}
+                  whileInView={{ x: 0, opacity: 1 }}
+                  transition={{
+                    delay: 0.8,
+                    x: { type: "spring", stiffness: 60 },
+                    opacity: { duration: 1 },
+                    ease: "easeIn",
+                    duration: 1,
+                  }}
+                >
+                  {item?.status}
+                </motion.td>
+              </tr>
+            ))}
           </tbody>
         </table>
       </div>
