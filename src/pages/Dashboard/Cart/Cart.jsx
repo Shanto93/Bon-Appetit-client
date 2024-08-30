@@ -5,6 +5,7 @@ import { FaTrashAlt } from "react-icons/fa";
 import Swal from "sweetalert2";
 import { axiosSecure } from "../../../hooks/useAxiosSecure";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 
 const Cart = () => {
   const [cart, refetch] = useCart();
@@ -50,28 +51,56 @@ const Cart = () => {
 
   return (
     <div className="p-4 md:p-6 lg:p-8">
-      <SectionTitle
-        heading={"My Cart ITEMS"}
-        subheading={"---Hurry Up!---"}
-      />
+      <SectionTitle heading={"My Cart ITEMS"} subheading={"---Hurry Up!---"} />
 
       {/* Header Content */}
       <div className="flex flex-col md:flex-row md:justify-between md:items-center mb-6">
-        <p className="text-lg md:text-2xl font-semibold mb-2 md:mb-0">
+        <motion.p
+          initial={{ x: -100, opacity: 0 }}
+          whileInView={{ x: 0, opacity: 1 }}
+          transition={{
+            delay: 0.2,
+            x: { type: "spring", stiffness: 60 },
+            opacity: { duration: 1 },
+            ease: "easeIn",
+            duration: 1,
+          }}
+          className="text-lg md:text-2xl font-semibold mb-2 md:mb-0"
+        >
           Items: {cart.length}
-        </p>
-        <p className="text-lg md:text-2xl font-semibold mb-2 md:mb-0">
+        </motion.p>
+        <motion.p
+          initial={{ y: -100, opacity: 0 }}
+          whileInView={{ y: 0, opacity: 1 }}
+          transition={{
+            delay: 0.2,
+            x: { type: "spring", stiffness: 60 },
+            opacity: { duration: 1 },
+            ease: "easeIn",
+            duration: 1,
+          }}
+          className="text-lg md:text-2xl font-semibold mb-2 md:mb-0"
+        >
           Total Price: ${cart.reduce((total, item) => total + item.price, 0)}
-        </p>
+        </motion.p>
         <Link to="/dashboard/payment">
-          <button
+          <motion.button
+            initial={{ x: 100, opacity: 0 }}
+            whileInView={{ x: 0, opacity: 1 }}
+            transition={{
+              delay: 0.2,
+              x: { type: "spring", stiffness: 60 },
+              opacity: { duration: 1 },
+              ease: "easeIn",
+              duration: 1,
+            }}
             className={`btn btn-ghost text-lg md:text-xl font-semibold bg-blue-700 text-white ${
               cart.length > 0 ? "" : "opacity-50 cursor-not-allowed"
             }`}
             disabled={cart.length === 0}
           >
             Pay
-          </button>
+          </motion.button>
         </Link>
       </div>
 
@@ -80,46 +109,114 @@ const Cart = () => {
         <table className="table w-full border border-gray-200 rounded-lg">
           {/* head */}
           <thead>
-            <tr className="bg-gray-100">
+            <motion.tr
+              initial={{ x: -100, opacity: 0 }}
+              whileInView={{ x: 0, opacity: 1 }}
+              transition={{
+                delay: 0.8,
+                x: { type: "spring", stiffness: 60 },
+                opacity: { duration: 1 },
+                ease: "easeIn",
+                duration: 1,
+              }}
+              className="bg-gray-100"
+            >
               <th className="p-2">#</th>
               <th className="p-2">Image</th>
               <th className="p-2">Name</th>
               <th className="p-2">Price</th>
               <th className="p-2">Action</th>
-            </tr>
+            </motion.tr>
           </thead>
           <tbody>
             {currentItems.map((item, index) => (
               <tr key={item._id}>
-                <th className="p-2">
+                <motion.th
+                  initial={{ x: 100, opacity: 0 }}
+                  whileInView={{ x: 0, opacity: 1 }}
+                  transition={{
+                    delay: 0.2,
+                    x: { type: "spring", stiffness: 60 },
+                    opacity: { duration: 1 },
+                    ease: "easeIn",
+                    duration: 1,
+                  }}
+                  className="p-2 text-base md:text-lg"
+                >
                   <label>{indexOfFirstItem + index + 1}</label>
-                </th>
+                </motion.th>
                 <td className="p-2">
                   <div className="flex items-center justify-center">
                     <div className="avatar">
-                      <div className="mask mask-squircle h-12 w-12">
+                      <motion.div
+                        initial={{ x: 100, opacity: 0 }}
+                        whileInView={{ x: 0, opacity: 1 }}
+                        transition={{
+                          delay: 0.4,
+                          x: { type: "spring", stiffness: 60 },
+                          opacity: { duration: 1 },
+                          ease: "easeIn",
+                          duration: 1,
+                        }}
+                        className="mask mask-squircle h-12 w-12"
+                      >
                         <img
                           src={item.image}
                           alt="Avatar Tailwind CSS Component"
                           className="object-cover"
                         />
-                      </div>
+                      </motion.div>
                     </div>
                   </div>
                 </td>
-                <td className="p-2">
-                  <span className="font-bold">{item.name}</span>
-                </td>
-                <td className="p-2">
-                  <span className="font-semibold">${item.price}</span>
-                </td>
+                <motion.td
+                  initial={{ x: 100, opacity: 0 }}
+                  whileInView={{ x: 0, opacity: 1 }}
+                  transition={{
+                    delay: 0.6,
+                    x: { type: "spring", stiffness: 60 },
+                    opacity: { duration: 1 },
+                    ease: "easeIn",
+                    duration: 1,
+                  }}
+                  className="p-2"
+                >
+                  <span className="text-base md:text-lg font-bold">
+                    {item.name}
+                  </span>
+                </motion.td>
+                <motion.td
+                  initial={{ x: 100, opacity: 0 }}
+                  whileInView={{ x: 0, opacity: 1 }}
+                  transition={{
+                    delay: 0.8,
+                    x: { type: "spring", stiffness: 60 },
+                    opacity: { duration: 1 },
+                    ease: "easeIn",
+                    duration: 1,
+                  }}
+                  className="p-2"
+                >
+                  <span className="text-base md:text-lg font-semibold">
+                    ${item.price}
+                  </span>
+                </motion.td>
                 <td className="p-2 text-center">
-                  <button
+                  <motion.button
+                    initial={{ x: 100, opacity: 0 }}
+                    whileInView={{ x: 0, opacity: 1 }}
+                    transition={{
+                      delay: 1,
+                      x: { type: "spring", stiffness: 60 },
+                      opacity: { duration: 1 },
+                      ease: "easeIn",
+                      duration: 1,
+                    }}
                     onClick={() => handleDeleteCartItem(item._id)}
                     className="btn btn-ghost p-1"
                   >
-                    <FaTrashAlt className="text-xl text-red-700 hover:text-red-500" />
-                  </button>
+                    <FaTrashAlt className="text-xl md:text-4xl text-red-700 hover:text-red-500" />
+                  </motion.button>
                 </td>
               </tr>
             ))}
