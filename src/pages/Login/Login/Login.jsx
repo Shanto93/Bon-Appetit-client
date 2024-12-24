@@ -24,6 +24,7 @@ const Login = () => {
     // console.log(captcha_value);
     if (validateCaptcha(captcha_value)) {
       setDisabled(false);
+
     } else {
       setDisabled(true);
     }
@@ -137,3 +138,5 @@ const Login = () => {
 };
 
 export default Login;
+
+

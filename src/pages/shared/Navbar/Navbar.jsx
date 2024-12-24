@@ -72,7 +72,7 @@ const Navbar = () => {
           ""
         ) : (
           <Link to={"login"}>
-            <button className="btn btn-ghost">LOGIN</button>
+            <button className="btn btn-sm btn-ghost">LOGIN</button>
           </Link>
         )}
       </li>

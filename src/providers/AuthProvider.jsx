@@ -11,6 +11,7 @@ import {
 } from "firebase/auth";
 import { app } from "../firebase/firebase.config";
 import useAxiosPublic from "../hooks/useAxiosPublic";
+import { toast } from "sonner";
 
 export const AuthContext = createContext(null);
 const auth = getAuth(app);
@@ -37,7 +38,12 @@ const AuthProvider = ({ children }) => {
   const createUser = async (email, password) => {
     try {
       setLoading(true);
-      const result = await createUserWithEmailAndPassword(auth, email, password);
+      const result = await createUserWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
       return result;
     } catch (error) {
       console.error("Create User Error: ", error);
@@ -47,19 +53,11 @@ const AuthProvider = ({ children }) => {
     }
   };
 
-  const updateUser = async (name, photo) => {
-    try {
-      setLoading(true);
-      await updateProfile(auth.currentUser, {
-        displayName: name,
-        photoURL: photo,
-      });
-    } catch (error) {
-      console.error("Update User Error: ", error);
-      throw error;
-    } finally {
-      setLoading(false);
-    }
+  const updateUserProfile = async (name, photo) => {
+    return updateProfile(auth.currentUser, {
+      displayName: name,
+      photoURL: photo,
+    });
   };
 
   const login = async (email, password) => {
@@ -69,6 +67,7 @@ const AuthProvider = ({ children }) => {
       return result;
     } catch (error) {
       console.error("Login Error: ", error);
+      toast.error(`Login error ${error}`);
       throw error;
     } finally {
       setLoading(false);
@@ -104,6 +103,7 @@ const AuthProvider = ({ children }) => {
       }
       setUser(currentUser);
       setLoading(false);
+      console.log(currentUser);
     });
 
     return () => {
@@ -117,7 +117,7 @@ const AuthProvider = ({ children }) => {
     createUser,
     login,
     logout,
-    updateUser,
+    updateUserProfile,
     googleSignIn,
   };
 
