@@ -166,19 +166,19 @@ const AllUsers = () => {
             ease: "easeIn",
             duration: 1,
           }}
-          className="text-2xl font-semibold mb-5"
+          className="text-2xl font-semibold mb-5 text-[#787663]"
         >
-          TOTAL USERS: {users.length}
+          TOTAL USERS: <span className="text-[#c38920]">{users.length}</span>
         </motion.h2>
       </div>
 
       {/* Table */}
-      <div>
+      <div className="md:px-6">
         <div className="overflow-x-auto">
           <table className="table table-zebra w-full">
             {/* head */}
             <thead>
-              <tr>
+              <tr className="text-[#787663]">
                 <motion.th
                   initial={{ x: 100, opacity: 0 }}
                   whileInView={{ x: 0, opacity: 1 }}
@@ -189,6 +189,7 @@ const AllUsers = () => {
                     ease: "easeIn",
                     duration: 1,
                   }}
+                  className=""
                 >
                   #
                 </motion.th>
@@ -259,6 +260,7 @@ const AllUsers = () => {
                       ease: "easeIn",
                       duration: 1,
                     }}
+                    className="text-[#c38920]"
                   >
                     {(currentPage - 1) * itemsPerPage + index + 1}
                   </motion.th>
@@ -272,6 +274,7 @@ const AllUsers = () => {
                       ease: "easeIn",
                       duration: 1,
                     }}
+                    className="text-[#c38920]"
                   >
                     {user.name}
                   </motion.td>
@@ -285,6 +288,7 @@ const AllUsers = () => {
                       ease: "easeIn",
                       duration: 1,
                     }}
+                    className="text-[#c38920]"
                   >
                     {user.email}
                   </motion.td>
@@ -298,15 +302,16 @@ const AllUsers = () => {
                       ease: "easeIn",
                       duration: 1,
                     }}
+                    className="text-[#c38920]"
                   >
                     {user.role === "admin" ? (
                       "Admin"
                     ) : (
                       <button
                         onClick={() => handleMakeAdmin(user)}
-                        className="btn bg-orange-500 btn-sm"
+                        className="btn bg-[#c38920] btn-sm border-0"
                       >
-                        <FaUsers className="text-3xl text-white hover:text-blue-700" />
+                        <FaUsers className="text-3xl text-white" />
                       </button>
                     )}
                   </motion.td>
@@ -325,7 +330,7 @@ const AllUsers = () => {
                       onClick={() => handleDelete(user)}
                       className="btn btn-ghost"
                     >
-                      <FaTrashAlt className="text-3xl text-red-700 hover:text-blue-700" />
+                      <FaTrashAlt className="text-3xl text-red-500" />
                     </button>
                   </motion.td>
                 </tr>

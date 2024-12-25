@@ -12,14 +12,11 @@ const Cart = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage] = useState(5);
 
-  // Calculate the indices of the first and last items on the current page
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
 
-  // Get the items to display on the current page
   const currentItems = cart.slice(indexOfFirstItem, indexOfLastItem);
 
-  // Calculate the total number of pages
   const totalPages = Math.ceil(cart.length / itemsPerPage);
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
@@ -65,9 +62,9 @@ const Cart = () => {
             ease: "easeIn",
             duration: 1,
           }}
-          className="text-lg md:text-2xl font-semibold mb-2 md:mb-0"
+          className="text-lg md:text-2xl font-semibold mb-2 md:mb-0 text-[#787663]"
         >
-          Items: {cart.length}
+          Items: <span className="text-[#c38920]">{cart.length}</span>
         </motion.p>
         <motion.p
           initial={{ y: -100, opacity: 0 }}
@@ -79,9 +76,9 @@ const Cart = () => {
             ease: "easeIn",
             duration: 1,
           }}
-          className="text-lg md:text-2xl font-semibold mb-2 md:mb-0"
+          className="text-lg md:text-2xl font-semibold mb-2 md:mb-0 text-[#787663]"
         >
-          Total Price: ${cart.reduce((total, item) => total + item.price, 0)}
+          Total Price: <span className="text-[#c38920]">${cart.reduce((total, item) => total + item.price, 0)}</span>
         </motion.p>
         <Link to="/dashboard/payment">
           <motion.button
@@ -94,7 +91,7 @@ const Cart = () => {
               ease: "easeIn",
               duration: 1,
             }}
-            className={`btn btn-ghost text-lg md:text-xl font-semibold bg-blue-700 text-white ${
+            className={`btn btn-sm btn-outline bg-transparent border-2 border-[#c38920] text-lg md:text-xl font-semibold text-[#c38920] hover:border-[#787663] hover:bg-transparent hover:text-[#787663] ${
               cart.length > 0 ? "" : "opacity-50 cursor-not-allowed"
             }`}
             disabled={cart.length === 0}
@@ -106,7 +103,7 @@ const Cart = () => {
 
       {/* Table Content */}
       <div className="overflow-x-auto">
-        <table className="table w-full border border-gray-200 rounded-lg">
+        <table className="table w-full border border-[#787663] rounded-lg">
           {/* head */}
           <thead>
             <motion.tr
@@ -119,7 +116,7 @@ const Cart = () => {
                 ease: "easeIn",
                 duration: 1,
               }}
-              className="bg-gray-100"
+              className="bg-[#787663] text-white"
             >
               <th className="p-2">#</th>
               <th className="p-2">Image</th>
@@ -141,7 +138,7 @@ const Cart = () => {
                     ease: "easeIn",
                     duration: 1,
                   }}
-                  className="p-2 text-base md:text-lg"
+                  className="p-2 text-base text-white md:text-lg"
                 >
                   <label>{indexOfFirstItem + index + 1}</label>
                 </motion.th>
@@ -181,7 +178,7 @@ const Cart = () => {
                   }}
                   className="p-2"
                 >
-                  <span className="text-base md:text-lg font-bold">
+                  <span className="text-base md:text-lg font-bold text-white">
                     {item.name}
                   </span>
                 </motion.td>
@@ -197,7 +194,7 @@ const Cart = () => {
                   }}
                   className="p-2"
                 >
-                  <span className="text-base md:text-lg font-semibold">
+                  <span className="text-base md:text-lg font-semibold text-white">
                     ${item.price}
                   </span>
                 </motion.td>
@@ -215,7 +212,7 @@ const Cart = () => {
                     onClick={() => handleDeleteCartItem(item._id)}
                     className="btn btn-ghost p-1"
                   >
-                    <FaTrashAlt className="text-xl md:text-4xl text-red-700 hover:text-red-500" />
+                    <FaTrashAlt className="text-xl md:text-4xl text-red-500 hover:text-red-700" />
                   </motion.button>
                 </td>
               </tr>
@@ -227,7 +224,7 @@ const Cart = () => {
       {/* Pagination */}
       <div className="flex justify-center mt-4">
         <nav>
-          <ul className="pagination flex gap-2">
+          <ul className="pagination flex gap-2 text-white">
             {Array.from({ length: totalPages }, (_, index) => (
               <li
                 key={index}

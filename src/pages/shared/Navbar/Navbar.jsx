@@ -253,7 +253,7 @@ const Navbar = () => {
           ""
         ) : (
           <Link to="login">
-            <button className="btn bg-transparent border-0 text-[#fcfcfc] hover:text-[#c38920]">
+            <button className="btn btn-sm bg-transparent border-0 text-[#fcfcfc] hover:text-[#c38920] hover:bg-transparent">
               LOGIN
             </button>
           </Link>
@@ -312,7 +312,7 @@ const Navbar = () => {
               </label>
               <ul
                 tabIndex={0}
-                className="dropdown-content bg-[#2f3665] text-[#fcfcfc] rounded-box z-[1] menu p-2 shadow w-52"
+                className="dropdown-content bg-[#2f3665]/50 text-[#fcfcfc] rounded-box z-[1] menu p-2 shadow w-52"
               >
                 <li>
                   <div className="flex justify-center items-center w-28 h-28 mx-auto">
@@ -325,14 +325,16 @@ const Navbar = () => {
                   <div className="flex justify-center items-center">
                     {isAdmin ? (
                       <Link to="/dashboard/adminHome">
-                        <button className="btn bg-transparent border-0 text-[#c38920]">
-                          {user.displayName}
+                        <button className="btn btn-sm bg-transparent border-0 text-[#c38920] hover:bg-transparent hover:border-0 ">
+                          {/* {user.displayName} */}
+                          Dashboard
                         </button>
                       </Link>
                     ) : (
                       <Link to="/dashboard/userHome">
-                        <button className="btn bg-transparent border-0 text-[#c38920]">
-                          {user.displayName}
+                        <button className="btn btn-sm bg-transparent border-0 text-[#c38920]">
+                          {/* {user.displayName} */}
+                          Dashboard
                         </button>
                       </Link>
                     )}
@@ -341,7 +343,7 @@ const Navbar = () => {
                 <li>
                   <button
                     onClick={handleLogOut}
-                    className="btn bg-transparent border-0 text-[#c38920]"
+                    className="btn btn-sm bg-red-500 border-0 text-white mx-3 hover:bg-transparent hover:border-0"
                   >
                     LogOut
                   </button>

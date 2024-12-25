@@ -52,7 +52,7 @@ const UpdateMenuItem = () => {
       <SectionTitle heading="Update Item" subheading="---Refresh info---" />
 
       {/* Form Part */}
-      <div className="hero bg-base-200 min-h-full">
+      <div className="hero bg-[#262a48] min-h-full">
         <div className="hero-content w-full">
           <motion.div
             initial={{ y: -100, opacity: 0 }}
@@ -64,7 +64,7 @@ const UpdateMenuItem = () => {
               ease: "easeIn",
               duration: 1,
             }}
-            className="card w-full bg-base-200 shadow-2xl"
+            className="card w-full bg-[#262a48]"
           >
             <form
               onSubmit={handleSubmit(onSubmit)}
@@ -83,7 +83,7 @@ const UpdateMenuItem = () => {
                 className="form-control"
               >
                 <label className="label">
-                  <span className="label-text">Recipe name*</span>
+                  <span className="label-text text-[#fcfcfc] font-semibold">Recipe name*</span>
                 </label>
                 <input
                   defaultValue={name}
@@ -109,7 +109,7 @@ const UpdateMenuItem = () => {
                   className="form-control"
                 >
                   <label className="label">
-                    <span className="label-text">Category*</span>
+                    <span className="label-text text-[#fcfcfc] font-semibold">Category*</span>
                   </label>
                   <select
                     defaultValue={category}
@@ -140,7 +140,7 @@ const UpdateMenuItem = () => {
                   className="form-control"
                 >
                   <label className="label">
-                    <span className="label-text">Price*</span>
+                    <span className="label-text text-[#fcfcfc] font-semibold">Price*</span>
                   </label>
                   <input
                     defaultValue={price}
@@ -165,7 +165,7 @@ const UpdateMenuItem = () => {
                 }}
               >
                 <label className="label">
-                  <span className="label-text">Recipe Details*</span>
+                  <span className="label-text text-[#fcfcfc] font-semibold">Recipe Details*</span>
                 </label>
                 <textarea
                   defaultValue={recipe}
@@ -205,7 +205,7 @@ const UpdateMenuItem = () => {
                   ease: "easeIn",
                   duration: 1,
                 }}
-                className="btn bg-yellow-600 w-full sm:w-1/3 mt-3 text-white font-semibold hover:btn-warning"
+                className="btn bg-[#c38920] w-full border-0 mt-3 text-white font-semibold hover:bg-[#787663]"
               >
                 Update Menu Items <FaUtensils className="ml-2" />
               </motion.button>

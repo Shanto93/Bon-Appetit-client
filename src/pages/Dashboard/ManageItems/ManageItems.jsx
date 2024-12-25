@@ -12,14 +12,11 @@ const ManageItems = () => {
   const [menu, , refetch] = useMenu();
   const axiosSecure = useAxiosSecure();
 
-  // Pagination state
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 5;
 
-  // Calculate total pages
   const totalPages = Math.ceil(menu.length / itemsPerPage);
 
-  // Get current items
   const currentItems = menu.slice(
     (currentPage - 1) * itemsPerPage,
     currentPage * itemsPerPage
@@ -140,7 +137,7 @@ const ManageItems = () => {
       ></SectionTitle>
 
       {/* Manage Item Table */}
-      <div>
+      <div className="md:px-5">
         <div className="overflow-x-auto">
           <table className="table w-full">
             {/* head */}
@@ -166,7 +163,7 @@ const ManageItems = () => {
             </thead>
             <tbody>
               {currentItems.map((item, index) => (
-                <tr key={index}>
+                <tr className="text-white" key={index}>
                   <motion.th
                     initial={{ x: 100, opacity: 0 }}
                     whileInView={{ x: 0, opacity: 1 }}
@@ -212,7 +209,7 @@ const ManageItems = () => {
                       duration: 1,
                     }}
                   >
-                    {item.name}{" "}
+                    {item.name}
                   </motion.td>
                   <motion.td
                     initial={{ x: 100, opacity: 0 }}
@@ -226,7 +223,7 @@ const ManageItems = () => {
                     }}
                     className="font-bold"
                   >
-                    ${item.price}{" "}
+                    ${item.price}
                   </motion.td>
                   <motion.th
                     initial={{ x: 100, opacity: 0 }}
@@ -241,7 +238,7 @@ const ManageItems = () => {
                   >
                     <Link to={`/dashboard/updateItem/${item._id}`}>
                       <button className="btn btn-ghost">
-                        <CiEdit className="text-3xl text-yellow-700 hover:text-blue-700" />
+                        <CiEdit className="text-3xl text-[#c38920]" />
                       </button>
                     </Link>
                   </motion.th>
@@ -260,7 +257,7 @@ const ManageItems = () => {
                       onClick={() => handleDeleteItem(item)}
                       className="btn btn-ghost"
                     >
-                      <FaTrashAlt className="text-3xl text-red-700 hover:text-blue-700" />
+                      <FaTrashAlt className="text-3xl text-red-500" />
                     </button>
                   </motion.th>
                 </tr>
