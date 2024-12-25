@@ -20,10 +20,10 @@ const UserHome = () => {
   console.log(userData.payments);
 
   return (
-    <div>
+    <div className="min-h-screen">
       {/* Other Stats */}
       <div className="w-full my-10 px-4">
-        <div className="flex flex-col md:flex-row stats shadow w-full max-w-4xl mx-auto gap-4">
+        <div className="flex flex-col md:flex-row stats bg-[#262a48] shadow w-full max-w-4xl mx-auto gap-4">
           <motion.div
             initial={{ x: -100, opacity: 0 }}
             whileInView={{ x: 0, opacity: 1 }}
@@ -34,12 +34,12 @@ const UserHome = () => {
               ease: "easeIn",
               duration: 1,
             }}
-            className="stat place-items-center p-4 bg-white rounded-lg shadow-md"
+            className="stat place-items-center p-4 bg-[#2f3665] rounded-md "
           >
-            <div className="stat-title text-center text-lg md:text-xl font-semibold">
+            <div className="stat-title text-[#787663] text-center text-lg md:text-xl font-semibold">
               Total Orders
             </div>
-            <div className="stat-value text-center text-2xl md:text-3xl font-bold">
+            <div className="stat-value text-[#c38920] text-center text-2xl md:text-3xl font-bold">
               {userData.ordersCount}
             </div>
           </motion.div>
@@ -54,12 +54,12 @@ const UserHome = () => {
               ease: "easeIn",
               duration: 1,
             }}
-            className="stat place-items-center p-4 bg-white rounded-lg shadow-md"
+            className="stat place-items-center p-4 bg-[#2f3665] rounded-md"
           >
-            <div className="stat-title text-center text-lg md:text-xl font-semibold">
+            <div className="stat-title text-center text-lg md:text-xl font-semibold text-[#787663]">
               Total Spent
             </div>
-            <div className="stat-value text-center text-2xl md:text-3xl font-bold text-secondary">
+            <div className="stat-value text-center text-2xl text-[#c38920] md:text-3xl font-bold">
               {userData.totalSpent}$
             </div>
           </motion.div>
@@ -74,12 +74,12 @@ const UserHome = () => {
               ease: "easeIn",
               duration: 1,
             }}
-            className="stat place-items-center p-4 bg-white rounded-lg shadow-md"
+            className="stat place-items-center p-4 bg-[#2f3665] rounded-lg"
           >
-            <div className="stat-title text-center text-lg md:text-xl font-semibold">
+            <div className="stat-title text-[#787663] text-center text-lg md:text-xl font-semibold">
               Reviews
             </div>
-            <div className="stat-value text-center text-2xl md:text-3xl font-bold">
+            <div className="stat-value text-[#c38920] text-center text-2xl md:text-3xl font-bold">
               {userData.totalReviews}
             </div>
           </motion.div>
@@ -98,7 +98,7 @@ const UserHome = () => {
           duration: 1,
         }}
       >
-        <div className="md:w-96 h-72 bg-red-600 bg-opacity-10 border-b-4  border-b-red-600 shadow-xl flex flex-col items-center justify-center mx-auto">
+        <div className="md:w-96 h-72 bg-[#2f3665] bg-opacity-10 border-b-4  border-b-[#787663] shadow-xl flex flex-col items-center justify-center mx-auto">
           <div className="flex justify-center">
             {user ? (
               <img
@@ -110,18 +110,18 @@ const UserHome = () => {
               ""
             )}
           </div>
-          <div className="flex justify-center mt-3 text-3xl font-bold">
+          <div className="flex justify-center text-white mt-3 text-3xl font-bold">
             {user ? user.displayName : ""}
           </div>
-          <div className="flex justify-center mt-3">
+          <div className="flex justify-center mt-3 text-white">
             {user ? <h2>Email: {user.email}</h2> : ""}
           </div>
           {isAdmin ? (
-            <div className="mt-3">
+            <div className="mt-3 text-white">
               <h2>Role: Admin</h2>
             </div>
           ) : (
-            <div className="mt-3">
+            <div className="mt-3 text-white">
               <h2>Role: User</h2>
             </div>
           )}

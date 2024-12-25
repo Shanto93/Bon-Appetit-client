@@ -13,7 +13,7 @@ const Image_Hosting_API = `https://api.imgbb.com/1/upload?key=${Image_Hosting_Ke
 const SignUp = () => {
   const navigate = useNavigate();
   const axiosPublic = useAxiosPublic();
-  const { createUser, updateUser } = useContext(AuthContext);
+  const { createUser, updateUserProfile } = useContext(AuthContext);
   const {
     register,
     reset,
@@ -32,7 +32,7 @@ const SignUp = () => {
     createUser(data.email, data.password).then((result) => {
       const loggedUser = result.user;
       console.log(loggedUser);
-      updateUser(data.name, res.data.data.display_url)
+      updateUserProfile(data.name, res.data.data.display_url)
         .then(() => {
           const userInfo = {
             name: data.name,
