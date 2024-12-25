@@ -2,7 +2,7 @@ const Footer = () => {
   return (
     <div>
       {/* Footer  start*/}
-      <footer className="footer bg-neutral text-neutral-content p-10">
+      <footer className="footer bg-[#2F4F4F] text-neutral-content p-10">
         <aside>
           <svg
             width="50"
