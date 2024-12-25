@@ -17,13 +17,13 @@ const PaymentHistory = () => {
   });
 
   return (
-    <div>
+    <div className="min-h-screen">
       <SectionTitle
         heading="Payment History"
         subheading="---See your all transaction history here---"
       ></SectionTitle>
 
-      <div className="overflow-x-auto">
+      <div className="overflow-x-auto px-10">
         <table className="table">
           {/* head */}
           <thead>
@@ -37,6 +37,7 @@ const PaymentHistory = () => {
                 ease: "easeIn",
                 duration: 1,
               }}
+              className="bg-[#787663] text-white"
             >
               <th>#</th>
               <th>Price</th>
@@ -46,7 +47,7 @@ const PaymentHistory = () => {
           </thead>
           <tbody>
             {payments?.map((item, index) => (
-              <tr key={index} className="bg-base-200">
+              <tr key={index} className="bg-[#2f3665] text-white">
                 <motion.th
                   initial={{ x: 100, opacity: 0 }}
                   whileInView={{ x: 0, opacity: 1 }}

@@ -98,33 +98,59 @@ const UserHome = () => {
           duration: 1,
         }}
       >
-        <div className="md:w-96 h-72 bg-[#2f3665] bg-opacity-10 border-b-4  border-b-[#787663] shadow-xl flex flex-col items-center justify-center mx-auto">
-          <div className="flex justify-center">
-            {user ? (
-              <img
-                className="h-28 w-28 rounded-full"
-                src={user.photoURL}
-                alt=""
-              />
-            ) : (
-              ""
-            )}
-          </div>
-          <div className="flex justify-center text-white mt-3 text-3xl font-bold">
-            {user ? user.displayName : ""}
-          </div>
-          <div className="flex justify-center mt-3 text-white">
-            {user ? <h2>Email: {user.email}</h2> : ""}
-          </div>
-          {isAdmin ? (
-            <div className="mt-3 text-white">
-              <h2>Role: Admin</h2>
+        <div className="diff h-[350px] rounded-md w-2/3 mx-auto aspect-[16/9]">
+          <div className="diff-item-1">
+            <div className="bg-[#2f3665] text-primary-content grid place-content-center text-9xl font-black">
+              {/* image */}
+              <div className="flex flex-col justify-center items-center gap-4 ">
+                <div className="avatar">
+                  <div className="ring-secondary ring-offset-base-100 w-36 rounded-full ring ring-offset-2">
+                    <img src={user?.photoURL} />
+                  </div>
+                </div>
+                {/* name */}
+                <div className="badge badge-secondary badge-outline">
+                  {user && user.displayName}
+                </div>
+
+                {/* email */}
+                <div className="badge badge-secondary badge-outline">
+                  {user && user.email}
+                </div>
+
+                {/* role */}
+                <div className="badge badge-secondary badge-outline">
+                  {isAdmin ? "Admin" : "User"}
+                </div>
+              </div>
             </div>
-          ) : (
-            <div className="mt-3 text-white">
-              <h2>Role: User</h2>
+          </div>
+          <div className="diff-item-2">
+            <div className="bg-[#787663]/90 grid place-content-center text-9xl font-black">
+              <div className="flex flex-col justify-center items-center gap-4">
+                <div className="avatar">
+                  <div className="ring-info ring-offset-base-100 w-36 rounded-full ring ring-offset-2">
+                    <img src={user?.photoURL} />
+                  </div>
+                </div>
+                {/* name */}
+                <div className="badge badge-info badge-outline">
+                  {user && user.displayName}
+                </div>
+
+                {/* email */}
+                <div className="badge badge-info badge-outline">
+                  {user && user.email}
+                </div>
+
+                {/* role */}
+                <div className="badge badge-info badge-outline">
+                  {isAdmin ? "Admin" : "User"}
+                </div>
+              </div>
             </div>
-          )}
+          </div>
+          <div className="diff-resizer"></div>
         </div>
       </motion.div>
     </div>

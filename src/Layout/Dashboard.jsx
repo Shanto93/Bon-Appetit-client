@@ -91,7 +91,7 @@ const Dashboard = () => {
           )}
 
           {/* Divider Part */}
-          <div className="divider"></div>
+          <div className="divider divider-warning"></div>
           <li className="text-[#fcfcfc]">
             <NavLink to="/">
               <IoMdHome />

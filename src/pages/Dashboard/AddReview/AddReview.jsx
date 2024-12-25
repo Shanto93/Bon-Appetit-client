@@ -53,9 +53,9 @@ const AddReview = () => {
 
       <div>
         <div>
-          <div className="hero bg-base-200 min-h-full">
+          <div className="hero bg-[#262a48] min-h-full">
             <div className="hero-content w-full">
-              <div className="card w-full bg-base-200 shrink-0 shadow-2xl">
+              <div className="card w-full bg-[#262a48] shrink-0">
                 <form
                   onSubmit={handleSubmit(onSubmit)}
                   className="card-body w-full"
@@ -75,8 +75,8 @@ const AddReview = () => {
                       className="form-control"
                     >
                       <label className="label">
-                        <span className="label-text text-center w-full text-3xl">
-                          Rate Us!
+                        <span className="label-text text-[#787663] text-center w-full text-3xl">
+                          Rate <span className="text-[#c38920]">Us!</span>
                         </span>
                       </label>
 
@@ -102,14 +102,14 @@ const AddReview = () => {
                     className="form-control w-full"
                   >
                     <label className="label">
-                      <span className="label-text">
+                      <span className="label-text text-white font-semibold">
                         Which recipe you liked most?
                       </span>
                     </label>
                     <select
                       defaultValue="salad"
                       {...register("category", { required: true })}
-                      className="select hover:select-warning w-full"
+                      className="select hover:select-warning w-full "
                     >
                       <option disabled value="salad">
                         Select a category
@@ -139,7 +139,7 @@ const AddReview = () => {
                     className="form-control"
                   >
                     <label className="label">
-                      <span className="label-text">
+                      <span className="label-text text-white font-semibold">
                         Do you have any suggestion for us?
                       </span>
                     </label>
@@ -170,7 +170,7 @@ const AddReview = () => {
                     }}
                   >
                     <label className="label">
-                      <span className="label-text">
+                      <span className="label-text text-white font-semibold">
                         Kindly express your care in a short way.
                       </span>
                     </label>
@@ -197,7 +197,7 @@ const AddReview = () => {
                       ease: "easeIn",
                       duration: 1,
                     }}
-                    className="btn bg-yellow-600 w-1/3 mt-3 text-white font-semibold hover:btn-warning"
+                    className="btn bg-[#c38920] border-0 mt-3 text-white font-semibold hover:btn-warning"
                   >
                     Send Review
                   </motion.button>

@@ -188,6 +188,7 @@ import { AuthContext } from "../../../providers/AuthProvider";
 import { TiShoppingCart } from "react-icons/ti";
 import useCart from "../../../hooks/useCart";
 import useAdmin from "../../../hooks/useAdmin";
+import logo from "./../../../assets/Logo/bon_apetit.png"
 
 const Navbar = () => {
   const { user, logout } = useContext(AuthContext);
@@ -290,9 +291,12 @@ const Navbar = () => {
               {navOptions}
             </ul>
           </div>
+          <div>
           <Link to="/" className="btn btn-ghost text-xl text-[#c38920]">
-            Bon Appetit
+            {/* Bon Appetit */}
+            <img className="w-32" src={logo} alt="" />
           </Link>
+          </div>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{navOptions}</ul>
@@ -304,11 +308,11 @@ const Navbar = () => {
                 tabIndex={0}
                 className="btn bg-transparent border-0 hover:bg-transparent"
               >
-                <img
-                  className="w-14 h-14 ml-3 rounded-full"
-                  src={user.photoURL}
-                  alt=""
-                />
+                <div className="avatar">
+                  <div className="ring-primary ring-offset-base-100 w-14 rounded-full ring ring-offset-2">
+                    <img src={user?.photoURL} />
+                  </div>
+                </div>
               </label>
               <ul
                 tabIndex={0}
@@ -316,11 +320,11 @@ const Navbar = () => {
               >
                 <li>
                   <div className="flex justify-center items-center w-28 h-28 mx-auto">
-                    <img
-                      className="w-20 h-20 rounded-full"
-                      src={user.photoURL}
-                      alt=""
-                    />
+                    <div className="avatar">
+                      <div className="w-20 rounded-full">
+                        <img src={user?.photoURL} />
+                      </div>
+                    </div>
                   </div>
                   <div className="flex justify-center items-center">
                     {isAdmin ? (
