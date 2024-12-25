@@ -39,19 +39,16 @@ const Order = () => {
           className="flex flex-col items-center"
         >
           <TabList className="flex flex-wrap justify-center mb-8">
-            <Tab className="px-4 py-2 cursor-pointer text-sm md:text-base lg:text-lg mx-2 my-2 md:my-0 border-b-2 hover:text-orange-500 focus:text-orange-500">
-              SALAD
-            </Tab>
-            <Tab className="px-4 py-2 cursor-pointer text-sm md:text-base lg:text-lg mx-2 my-2 md:my-0 border-b-2 hover:text-orange-500 focus:text-orange-500">
+            <Tab className="px-4 py-2 cursor-pointer text-sm md:text-base lg:text-lg text-[#fcfcfc] border-[#787663] mx-2 my-2 md:my-0 border-b-2  hover:text-[#c38920] focus:text-[#c38920] focus:bg-transparent">
               PIZZA
             </Tab>
-            <Tab className="px-4 py-2 cursor-pointer text-sm md:text-base lg:text-lg mx-2 my-2 md:my-0 border-b-2 hover:text-orange-500 focus:text-orange-500">
+            <Tab className="px-4 py-2 cursor-pointer text-sm md:text-base lg:text-lg text-[#fcfcfc] border-[#787663] mx-2 my-2 md:my-0 border-b-2 hover:text-[#c38920] focus:text-[#c38920] focus:bg-transparent">
               SOUPS
             </Tab>
-            <Tab className="px-4 py-2 cursor-pointer text-sm md:text-base lg:text-lg mx-2 my-2 md:my-0 border-b-2 hover:text-orange-500 focus:text-orange-500">
+            <Tab className="px-4 py-2 cursor-pointer text-sm md:text-base lg:text-lg text-[#fcfcfc] border-[#787663] mx-2 my-2 md:my-0 border-b-2 hover:text-[#c38920] focus:text-[#c38920] focus:bg-transparent">
               DESSERTS
             </Tab>
-            <Tab className="px-4 py-2 cursor-pointer text-sm md:text-base lg:text-lg mx-2 my-2 md:my-0 border-b-2 hover:text-orange-500 focus:text-orange-500">
+            <Tab className="px-4 py-2 cursor-pointer text-sm md:text-base lg:text-lg text-[#fcfcfc] border-[#787663] mx-2 my-2 md:my-0 border-b-2 hover:text-[#c38920] focus:text-[#c38920] focus:bg-transparent">
               DRINKS
             </Tab>
           </TabList>

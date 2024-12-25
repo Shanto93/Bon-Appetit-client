@@ -11,7 +11,7 @@ const MenuCategory = ({ items, title }) => {
       </div>
       <Link to={`/order/${title}`}>
         <div className="md:flex justify-center items-center mb-6 md:mb-16">
-          <button className="btn btn-outline mt-2 border-0 border-b-4 rounded-lg hover:border-orange-500">
+          <button className="btn btn-outline border-[#c38920] text-[#fcfcfc] mt-2 border-0 border-b-4 rounded-lg hover:border-[#787663] hover:bg-transparent hover:text-[#c38920]">
             Order {title}
           </button>
         </div>
