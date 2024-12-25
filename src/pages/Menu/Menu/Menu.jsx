@@ -20,7 +20,7 @@ const Menu = () => {
   return (
     <div>
       <Helmet>
-        <title>Bistro | Menu</title>
+        <title>Bon Appetit | Menu</title>
       </Helmet>
       {/* for today's offered section */}
       <Cover

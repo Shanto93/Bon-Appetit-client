@@ -19,7 +19,7 @@ const AddReview = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
-    data.rating = rating; // Manually add the rating to the form data
+    data.rating = rating;
     console.log(data);
     const reviewItem = {
       name: user.displayName,
