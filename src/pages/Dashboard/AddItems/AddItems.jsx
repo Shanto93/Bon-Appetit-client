@@ -55,7 +55,7 @@ const AddItems = () => {
       ></SectionTitle>
 
       {/* form part */}
-      <div className="hero bg-base-200 min-h-full">
+      <div className="hero bg-[#262a48] min-h-full">
         <div className="hero-content w-full flex-col">
           <motion.div
             initial={{ x: -100, opacity: 0 }}
@@ -67,7 +67,7 @@ const AddItems = () => {
               ease: "easeIn",
               duration: 1,
             }}
-            className="card w-full bg-base-200 shadow-2xl p-6"
+            className="card w-full bg-[#262a48]"
           >
             <form
               onSubmit={handleSubmit(onSubmit)}
@@ -86,7 +86,7 @@ const AddItems = () => {
                 className="form-control"
               >
                 <label className="label">
-                  <span className="label-text">Recipe name*</span>
+                  <span className="label-text text-[#fcfcfc] font-semibold">Recipe name*</span>
                 </label>
                 <input
                   {...register("name", { required: true })}
@@ -111,7 +111,7 @@ const AddItems = () => {
                   className="form-control"
                 >
                   <label className="label">
-                    <span className="label-text">Category*</span>
+                    <span className="label-text text-[#fcfcfc] font-semibold">Category*</span>
                   </label>
                   <select
                     defaultValue="salad"
@@ -142,7 +142,7 @@ const AddItems = () => {
                   className="form-control"
                 >
                   <label className="label">
-                    <span className="label-text">Price*</span>
+                    <span className="label-text text-[#fcfcfc] font-semibold">Price*</span>
                   </label>
                   <input
                     {...register("price", { required: true })}
@@ -167,7 +167,7 @@ const AddItems = () => {
                 className="form-control mt-4"
               >
                 <label className="label">
-                  <span className="label-text">Recipe Details*</span>
+                  <span className="label-text text-[#fcfcfc] font-semibold">Recipe Details*</span>
                 </label>
                 <textarea
                   {...register("recipe", { required: true })}
@@ -190,7 +190,7 @@ const AddItems = () => {
                 className="form-control mt-4"
               >
                 <label className="label">
-                  <span className="label-text">Upload Image*</span>
+                  <span className="label-text text-[#fcfcfc] font-semibold">Upload Image*</span>
                 </label>
                 <input
                   {...register("image", { required: true })}
@@ -210,9 +210,9 @@ const AddItems = () => {
                   ease: "easeIn",
                   duration: 1,
                 }}
-                className="flex justify-center mt-6"
+                className="flex justify-center mt-6 w-full"
               >
-                <button className="btn bg-yellow-600 w-full md:w-1/3 text-white font-semibold hover:btn-warning flex justify-center items-center gap-2">
+                <button className="btn border-0 bg-[#c38920] w-full text-white font-semibold hover:text-[#fcfcfc] hover:bg-[#787663] flex justify-center items-center gap-2">
                   Add Items
                   <FaUtensils />
                 </button>

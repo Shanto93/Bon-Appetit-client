@@ -103,7 +103,7 @@ const AdminHome = () => {
   }
 
   if (error || !stats) {
-    return <div>Something went wrong. Please try again later.</div>;
+    return <div className="text-white">Something went wrong. Please try again later.</div>;
   }
 
   const getPath = (x, y, width, height) => {
@@ -167,9 +167,9 @@ const AdminHome = () => {
           ease: "easeIn",
           duration: 1,
         }}
-        className="text-xl md:text-2xl font-semibold mb-4"
+        className="text-xl md:text-2xl font-semibold mb-4 text-[#787663]"
       >
-        Hi, Welcome {user.displayName ? user.displayName : "back"}!
+        Hi, Welcome <span className="text-[#c38920]">{user.displayName ? user.displayName : "back"}!</span>
       </motion.h1>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -183,15 +183,15 @@ const AdminHome = () => {
             ease: "easeIn",
             duration: 1,
           }}
-          className="stat shadow hover:scale-105 transform transition-transform duration-300"
+          className="stat bg-[#2f3665] rounded-md shadow hover:scale-105 transform transition-transform duration-300"
         >
-          <div className="stat-figure text-3xl text-orange-500">
+          <div className="stat-figure text-3xl text-[#c38920]">
             <FaDollarSign />
           </div>
-          <div className="stat-value text-lg md:text-xl lg:text-2xl">
+          <div className="stat-value text-[#787663] text-lg md:text-xl lg:text-2xl">
             {stats.revenue}
           </div>
-          <div className="stat-title">Revenue</div>
+          <div className="stat-title text-[#fcfcfc]">Revenue</div>
         </motion.div>
 
         <motion.div
@@ -204,15 +204,15 @@ const AdminHome = () => {
             ease: "easeIn",
             duration: 1,
           }}
-          className="stat shadow hover:scale-105 transform transition-transform duration-300"
+          className="stat shadow bg-[#2f3665] rounded-md hover:scale-105 transform transition-transform duration-300"
         >
-          <div className="stat-figure text-3xl text-orange-500">
+          <div className="stat-figure text-3xl text-[#c38920]">
             <FaUsers />
           </div>
-          <div className="stat-value text-lg md:text-xl lg:text-2xl">
+          <div className="stat-value text-[#787663] text-lg md:text-xl lg:text-2xl">
             {stats.customers}
           </div>
-          <div className="stat-title">Customers</div>
+          <div className="stat-title text-[#fcfcfc]">Customers</div>
         </motion.div>
 
         <motion.div
@@ -225,15 +225,15 @@ const AdminHome = () => {
             ease: "easeIn",
             duration: 1,
           }}
-          className="stat shadow hover:scale-105 transform transition-transform duration-300"
+          className="stat shadow bg-[#2f3665] rounded-md hover:scale-105 transform transition-transform duration-300"
         >
-          <div className="stat-figure text-3xl text-orange-500">
+          <div className="stat-figure text-3xl text-[#c38920]">
             <FaBook />
           </div>
-          <div className="stat-value text-lg md:text-xl lg:text-2xl">
+          <div className="stat-value text-[#787663] text-lg md:text-xl lg:text-2xl">
             {stats.products}
           </div>
-          <div className="stat-title">Products</div>
+          <div className="stat-title text-[#fcfcfc]">Products</div>
         </motion.div>
 
         <motion.div
@@ -246,15 +246,15 @@ const AdminHome = () => {
             ease: "easeIn",
             duration: 1,
           }}
-          className="stat shadow hover:scale-105 transform transition-transform duration-300"
+          className="stat shadow bg-[#2f3665] rounded-md hover:scale-105 transform transition-transform duration-300"
         >
-          <div className="stat-figure text-3xl text-orange-500">
+          <div className="stat-figure text-3xl text-[#c38920]">
             <FaFirstOrder />
           </div>
-          <div className="stat-value text-lg md:text-xl lg:text-2xl">
+          <div className="stat-value text-[#787663] text-lg md:text-xl lg:text-2xl">
             {stats.orders}
           </div>
-          <div className="stat-title">Orders</div>
+          <div className="stat-title text-[#fcfcfc]">Orders</div>
         </motion.div>
       </div>
 

@@ -30,31 +30,31 @@ const Dashboard = () => {
           ease: "easeIn",
           duration: 1,
         }} 
-    className="flex flex-col md:flex-row">
+    className="flex flex-col md:flex-row ">
       {/* Sidebar */}
-      <div className="w-full md:w-64 min-h-fit md:min-h-screen bg-yellow-500 md:fixed md:left-0">
+      <div className="w-full md:w-64 min-h-fit md:min-h-screen bg-[#262a48] md:fixed md:left-0 border-r-2 border-white">
         <ul className="menu p-4 text-center md:text-left">
           {isAdmin ? (
             <>
-              <li>
+              <li className="text-[#fcfcfc]">
                 <NavLink to="/dashboard/adminHome">
                   <FaHome />
                   ADMIN HOME
                 </NavLink>
               </li>
-              <li>
+              <li className="text-[#fcfcfc]">
                 <NavLink to="/dashboard/addItems">
                   <FaUtensils />
                   ADD ITEMS
                 </NavLink>
               </li>
-              <li>
+              <li className="text-[#fcfcfc]">
                 <NavLink to="/dashboard/manageItems">
                   <FaListUl />
                   MANAGE ITEMS
                 </NavLink>
               </li>
-              <li>
+              <li className="text-[#fcfcfc]">
                 <NavLink to="/dashboard/allUsers">
                   <FaUsers />
                   ALL USERS
@@ -63,25 +63,25 @@ const Dashboard = () => {
             </>
           ) : (
             <>
-              <li>
+              <li className="text-[#fcfcfc]">
                 <NavLink to="/dashboard/userHome">
                   <FaHome />
                   User Home
                 </NavLink>
               </li>
-              <li>
+              <li className="text-[#fcfcfc]">
                 <NavLink to="/dashboard/paymentHistory">
                   <FaCalendar />
                   Payment History
                 </NavLink>
               </li>
-              <li>
+              <li className="text-[#fcfcfc]">
                 <NavLink to="/dashboard/cart">
                   <HiShoppingCart />
                   My Cart ({cart.length})
                 </NavLink>
               </li>
-              <li>
+              <li className="text-[#fcfcfc]">
                 <NavLink to="/dashboard/reviews">
                   <MdOutlineRateReview />
                   Add Review
@@ -92,19 +92,19 @@ const Dashboard = () => {
 
           {/* Divider Part */}
           <div className="divider"></div>
-          <li>
+          <li className="text-[#fcfcfc]">
             <NavLink to="/">
               <IoMdHome />
               Home
             </NavLink>
           </li>
-          <li>
+          <li className="text-[#fcfcfc]">
             <NavLink to="/menu">
               <BiSolidFoodMenu />
               Menu
             </NavLink>
           </li>
-          <li>
+          <li className="text-[#fcfcfc]">
             <NavLink to="/order/salad">
               <SlCalender />
               Order
@@ -114,7 +114,7 @@ const Dashboard = () => {
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 mt-8 md:ml-64 p-4">
+      <div className="flex-1 pt-8 md:ml-64 p-4 bg-[#262a48]">
         <Outlet />
       </div>
     </motion.div>
