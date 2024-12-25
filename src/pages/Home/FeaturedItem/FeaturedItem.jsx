@@ -11,7 +11,7 @@ const FeaturedItem = () => {
         heading={"Featured Item"}
       ></SectionTitle>
 
-      <div className="md:flex justify-center items-center py-12 px-6 md:px-12 lg:px-36 bg-slate-500 bg-opacity-30">
+      <div className="md:flex justify-center items-center py-12 px-6 md:px-12 lg:px-36 bg-[#787663] bg-opacity-40">
         <div className="md:mr-16">
           <motion.img
             initial={{ x: -100, opacity: 0 }}
@@ -38,7 +38,7 @@ const FeaturedItem = () => {
               ease: "easeIn",
               duration: 1,
             }}
-            className="text-lg md:text-xl hover:text-orange-400"
+            className="text-lg text-[#fcfcfc] md:text-lg"
           >
             June 04, 2024
           </motion.h3>
@@ -52,9 +52,11 @@ const FeaturedItem = () => {
               ease: "easeIn",
               duration: 1,
             }}
-            className="text-lg md:text-xl hover:text-orange-400 mt-2"
+            className="text-lg font-bold text-[#787663] md:text-xl hover:text-orange-400 mt-2"
           >
-            WHERE CAN I GET SOME?
+            <span className="text-[#c38920]">WHERE</span> CAN{" "}
+            <span className="text-[#c38920]">I</span> GET{" "}
+            <span className="text-[#c38920]">SOME</span>?
           </motion.h3>
           <motion.p
             initial={{ x: 100, opacity: 0 }}
@@ -66,7 +68,7 @@ const FeaturedItem = () => {
               ease: "easeIn",
               duration: 1,
             }}
-            className="mt-4 text-sm md:text-base lg:text-lg hover:text-orange-400"
+            className="mt-4 text-[#fcfcfc] text-sm md:text-base lg:text-md"
           >
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Error
             voluptate facere, deserunt dolores maiores quod nobis quas quasi.
@@ -83,7 +85,7 @@ const FeaturedItem = () => {
               ease: "easeIn",
               duration: 1,
             }}
-            className="btn btn-outline mt-4 border-0 border-b-4 rounded-lg hover:border-orange-500"
+            className="btn border-[#c38920] text-[#fcfcfc] btn-outline mt-4 border-0 border-b-4 rounded-lg hover:border-[#787663] hover:bg-transparent hover:text-[#c38920]"
           >
             Order Now
           </motion.button>
