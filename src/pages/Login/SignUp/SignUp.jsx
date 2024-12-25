@@ -67,19 +67,25 @@ const SignUp = () => {
       <Helmet>
         <title>Bistro | Signup</title>
       </Helmet>
-      <div className="hero bg-base-200 min-h-screen flex flex-col lg:flex-row lg:justify-center lg:items-center">
-        <div className="hero-content flex flex-col lg:flex-row lg:space-x-8 w-full lg:w-2/3 max-w-screen-lg">
-          <div className="text-center lg:text-left flex-1 lg:mr-8">
-            <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold mb-5">
-              Signup now!
+      <div className="hero bg-[#262a48] min-h-screen flex flex-col lg:flex-row lg:justify-center lg:items-center">
+        <div className=" hero-content flex flex-col lg:flex-row lg:space-x-8 w-full max-w-screen-lg">
+          <div className="text-center lg:text-left lg:mr-8 flex-1">
+            <h1 className="text-2xl md:mb-8 text-center sm:text-3xl md:text-4xl lg:text-5xl font-bold text-[#787663]">
+              Signup <span className="text-[#c38920]">now!</span>
             </h1>
-            <img src={signUPImg} alt="Authentication" className="w-full max-w-md mx-auto lg:mx-0" />
+            <img
+              src={signUPImg}
+              alt="Authentication"
+              className="w-full mx-auto lg:mx-0"
+            />
           </div>
-          <div className="card bg-base-100 w-full max-w-sm mx-auto lg:mx-0 shadow-2xl">
+          <div className="card bg-[#262a48] flex-1 w-full max-w-md mx-auto lg:mx-0">
             <form onSubmit={handleSubmit(onSubmit)} className="card-body">
               <div className="form-control mb-4">
                 <label className="label">
-                  <span className="label-text">Name</span>
+                  <span className="label-text text-white font-semibold">
+                    Name
+                  </span>
                 </label>
                 <input
                   type="text"
@@ -103,7 +109,9 @@ const SignUp = () => {
 
               <div className="form-control mb-4">
                 <label className="label">
-                  <span className="label-text">Email</span>
+                  <span className="label-text text-white font-semibold">
+                    Email
+                  </span>
                 </label>
                 <input
                   type="email"
@@ -112,13 +120,17 @@ const SignUp = () => {
                   className="input input-bordered"
                 />
                 {errors.email && (
-                  <span className="text-red-600 text-sm">Email is required</span>
+                  <span className="text-red-600 text-sm">
+                    Email is required
+                  </span>
                 )}
               </div>
 
               <div className="form-control mb-6">
                 <label className="label">
-                  <span className="label-text">Password</span>
+                  <span className="label-text text-white font-semibold">
+                    Password
+                  </span>
                 </label>
                 <input
                   type="password"
@@ -131,7 +143,9 @@ const SignUp = () => {
                   className="input input-bordered"
                 />
                 {errors.password?.type === "required" && (
-                  <span className="text-red-600 text-sm">Password is required</span>
+                  <span className="text-red-600 text-sm">
+                    Password is required
+                  </span>
                 )}
                 {errors.password?.type === "minLength" && (
                   <span className="text-red-600 text-sm">
@@ -145,19 +159,19 @@ const SignUp = () => {
                 )}
               </div>
 
-              <div className="form-control mb-6">
+              <div className="form-control mb-0">
                 <input
-                  className="btn btn-primary w-full"
+                  className="btn bg-[#c38920] border-0 text-white w-full"
                   type="submit"
                   value="SIGNUP"
                 />
               </div>
             </form>
             <div className="text-center pb-7">
-              <p>
+              <p className="text-white">
                 Already signed up? Please
                 <Link to={"/login"}>
-                  <span className="text-blue-500"> LOGIN</span>
+                  <span className="text-[#787663]"> Login</span>
                 </Link>
               </p>
             </div>
