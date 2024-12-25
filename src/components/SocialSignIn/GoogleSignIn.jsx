@@ -34,11 +34,11 @@ const GoogleSignIn = () => {
     });
   };
   return (
-    <div className="flex justify-center items-center">
-      <div>
+    <div className="flex justify-center items-center w-full">
+      <div className="md:w-80">
         <button
           onClick={handleGoogleLogin}
-          className="btn btn-outline rounded-2xl px-5 mb-3"
+          className="btn btn-outline rounded-2xl px-5 mb-3 border-white w-full border-2 text-white hover:bg-transparent hover:border-white"
         >
           <FcGoogle className="text-xl md:mr-8" />
           Continue with Google

@@ -24,7 +24,6 @@ const Login = () => {
     // console.log(captcha_value);
     if (validateCaptcha(captcha_value)) {
       setDisabled(false);
-
     } else {
       setDisabled(true);
     }
@@ -61,19 +60,21 @@ const Login = () => {
       <Helmet>
         <title>Bistro | Login</title>
       </Helmet>
-      <div className="hero bg-base-200 min-h-screen">
+      <div className="hero bg-[#262a48] min-h-screen">
         <div className="hero-content flex-col lg:flex-row">
-          <div className="text-center lg:text-left">
-            <h1 className="text-3xl md:text-5xl font-bold mb-5 text-center">
-              Login now!
+          <div className="text-center lg:text-left flex-1">
+            <h1 className="text-3xl text-[#787663] md:text-5xl font-bold mb-5 text-center">
+              Login <span className="text-[#c38920]">now!</span>
             </h1>
             <img src={loginImg} alt="Authentication Image" />
           </div>
-          <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+          <div className="card bg-[#262a48] w-full max-w-sm shrink-0 flex-1">
             <form onSubmit={handleLogin} className="card-body">
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Email</span>
+                  <span className="label-text text-white font-semibold">
+                    Email
+                  </span>
                 </label>
                 <input
                   type="email"
@@ -85,7 +86,9 @@ const Login = () => {
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Password</span>
+                  <span className="label-text text-white font-semibold">
+                    Password
+                  </span>
                 </label>
                 <input
                   type="password"
@@ -111,22 +114,26 @@ const Login = () => {
               <div className="form-control mt-6">
                 <input
                   disabled={disabled}
-                  className="btn btn-primary"
+                  className={`${
+                    disabled
+                      ? "btn btn-disabled bg-red-500"
+                      : "btn bg-[#c38920] border-0 text-white"
+                  }`}
                   type="submit"
                   value="LOGIN"
                 />
               </div>
             </form>
 
-            <div>
+            <div className="w-full">
               <GoogleSignIn></GoogleSignIn>
             </div>
 
             <div>
-              <p className="text-center pb-7">
-                Did not signup yet. Please 
+              <p className="text-center pb-7 text-white">
+                Did not signup yet?
                 <Link to={"/signup"}>
-                  <span className="text-blue-500"> SIGNUP</span>
+                  <span className="text-blue-500"> Signup</span>
                 </Link>
               </p>
             </div>
@@ -138,5 +145,3 @@ const Login = () => {
 };
 
 export default Login;
-
-
