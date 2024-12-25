@@ -58,9 +58,9 @@ const Testimonials = () => {
                   ease: "easeIn",
                   duration: 1,
                 }}
-                className="mt-2 text-center"
+                className="mt-2 text-center text-[#fcfcfc]"
               >
-                {review.details}{" "}
+                {review.details}
               </motion.p>
               <motion.h2
                 initial={{ x: 100, opacity: 0 }}
@@ -72,7 +72,7 @@ const Testimonials = () => {
                   ease: "easeIn",
                   duration: 1,
                 }}
-                className="text-xl md:text-3xl text-orange-500 mt-2"
+                className="text-xl md:text-3xl text-[#c38920]"
               >
                 {review.name}
               </motion.h2>

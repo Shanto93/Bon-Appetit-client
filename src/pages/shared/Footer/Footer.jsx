@@ -2,7 +2,7 @@ const Footer = () => {
   return (
     <div>
       {/* Footer  start*/}
-      <footer className="footer bg-[#2F4F4F] text-neutral-content p-10">
+      <footer className="footer bg-[#2f3665] text-neutral-content p-10">
         <aside>
           <svg
             width="50"
@@ -61,9 +61,9 @@ const Footer = () => {
         </nav>
       </footer>
       {/* footer end */}
-      <footer className="footer footer-center bg-base-300 text-base-content p-4">
+      <footer className="footer footer-center bg-[#2f3665] text-base-content p-4">
         <aside>
-          <p>
+          <p className="text-[#fcfcfc]">
             Copyright © ${new Date().getFullYear()} - All right reserved by Shanta Islam
           </p>
         </aside>
