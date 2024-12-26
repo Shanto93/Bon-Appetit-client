@@ -33,7 +33,7 @@ const Banner = () => {
 
 
         <button className="absolute bottom-5 right-5 btn-sm btn-outline mt-4 border-0 border-b-4 rounded-lg border-orange-500 hover:border-orange-500 bg-black text-white" onClick={toggleMute}>
-        {isMuted ? <GoUnmute className="text-lg md:text-3xl hover:text-orange-600 hover:border-orange-600" /> : <GoMute className="text-lg md:text-3xl hover:text-orange-700 hover:border-orange-600"/>}
+        {isMuted ? <GoMute className="text-lg md:text-3xl hover:text-orange-600 hover:border-orange-600" /> : <GoUnmute className="text-lg md:text-3xl hover:text-orange-700 hover:border-orange-600"/>}
           </button>
 
 

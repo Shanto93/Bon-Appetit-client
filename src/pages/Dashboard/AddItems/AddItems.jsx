@@ -121,11 +121,12 @@ const AddItems = () => {
                     <option disabled value="salad">
                       Select a category
                     </option>
-                    <option>salad</option>
-                    <option>pizza</option>
-                    <option>soups</option>
-                    <option>desserts</option>
-                    <option>drinks</option>
+                    <option value="salad">salad</option>
+                    <option value="pizza">pizza</option>
+                    <option value="soup">soup</option>
+                    <option value="dessert">dessert</option>
+                    <option value="drinks">drinks</option>
+                    <option value="offered">offered</option>
                   </select>
                 </motion.div>
 

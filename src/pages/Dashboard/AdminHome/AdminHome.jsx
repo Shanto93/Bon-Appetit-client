@@ -49,13 +49,13 @@ const AdminHome = () => {
   useEffect(() => {
     const updateChartSize = () => {
       if (window.innerWidth < 640) {
-        // Mobile devices
+        
         setChartSize({ width: 280, height: 220 });
       } else if (window.innerWidth < 1024) {
-        // Tablets
+        
         setChartSize({ width: 400, height: 300 });
       } else {
-        // PCs
+        
         setChartSize({ width: 450, height: 350 });
       }
     };
@@ -72,13 +72,13 @@ const AdminHome = () => {
   useEffect(() => {
     const updatePieChartSize = () => {
       if (window.innerWidth < 640) {
-        // Mobile devices
+        
         setPieChartSize({ width: 250, height: 250 });
       } else if (window.innerWidth < 1024) {
-        // Tablets
+        
         setPieChartSize({ width: 400, height: 300 });
       } else {
-        // PCs
+        
         setPieChartSize({ width: 350, height: 350 });
       }
     };
@@ -189,7 +189,7 @@ const AdminHome = () => {
             <FaDollarSign />
           </div>
           <div className="stat-value text-[#787663] text-lg md:text-xl lg:text-2xl">
-            {stats.revenue}
+            {stats.revenue.toFixed(2)}
           </div>
           <div className="stat-title text-[#fcfcfc]">Revenue</div>
         </motion.div>
