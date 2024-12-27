@@ -38,6 +38,7 @@ const AdminHome = () => {
     queryKey: ["chartData"],
     queryFn: async () => {
       const res = await axiosSecure.get("/orderStat");
+      console.log(res.data);
       return res.data;
     },
   });
@@ -49,13 +50,10 @@ const AdminHome = () => {
   useEffect(() => {
     const updateChartSize = () => {
       if (window.innerWidth < 640) {
-        
         setChartSize({ width: 280, height: 220 });
       } else if (window.innerWidth < 1024) {
-        
         setChartSize({ width: 400, height: 300 });
       } else {
-        
         setChartSize({ width: 450, height: 350 });
       }
     };
@@ -72,13 +70,10 @@ const AdminHome = () => {
   useEffect(() => {
     const updatePieChartSize = () => {
       if (window.innerWidth < 640) {
-        
         setPieChartSize({ width: 250, height: 250 });
       } else if (window.innerWidth < 1024) {
-        
         setPieChartSize({ width: 400, height: 300 });
       } else {
-        
         setPieChartSize({ width: 350, height: 350 });
       }
     };
@@ -103,7 +98,11 @@ const AdminHome = () => {
   }
 
   if (error || !stats) {
-    return <div className="text-white">Something went wrong. Please try again later.</div>;
+    return (
+      <div className="text-white">
+        Something went wrong. Please try again later.
+      </div>
+    );
   }
 
   const getPath = (x, y, width, height) => {
@@ -155,6 +154,9 @@ const AdminHome = () => {
     );
   };
 
+  console.log("Stats:", stats);
+  console.log("Chart Data:", chartData);
+
   return (
     <div className="p-4">
       <motion.h1
@@ -169,7 +171,10 @@ const AdminHome = () => {
         }}
         className="text-xl md:text-2xl font-semibold mb-4 text-[#787663]"
       >
-        Hi, Welcome <span className="text-[#c38920]">{user.displayName ? user.displayName : "back"}!</span>
+        Hi, Welcome{" "}
+        <span className="text-[#c38920]">
+          {user.displayName ? user.displayName : "back"}!
+        </span>
       </motion.h1>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -302,14 +307,14 @@ const AdminHome = () => {
         <motion.div
           className="w-full"
           initial={{ x: 100, opacity: 0 }}
-        whileInView={{ x: 0, opacity: 1 }}
-        transition={{
-          delay: 1,
-          x: { type: "spring", stiffness: 60 },
-          opacity: { duration: 1 },
-          ease: "easeIn",
-          duration: 1,
-        }}
+          whileInView={{ x: 0, opacity: 1 }}
+          transition={{
+            delay: 1,
+            x: { type: "spring", stiffness: 60 },
+            opacity: { duration: 1 },
+            ease: "easeIn",
+            duration: 1,
+          }}
         >
           <PieChart
             width={piechartSize.width}

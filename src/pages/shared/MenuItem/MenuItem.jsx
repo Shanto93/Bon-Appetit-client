@@ -18,8 +18,8 @@ const MenuItem = ({ item }) => {
           ease: "easeIn",
           duration: 1,
         }}
-        style={{ borderRadius: "0 150px 150px 150px" }}
-        className="w-[100px] md:w-[100px] lg:w-[120px] mx-auto md:mx-0"
+        style={{ borderRadius: "0 200px 200px 200px" }}
+        className="w-[100px] md:w-[100px] lg:w-[120px] h-[90px] mx-auto md:mx-0"
         src={image}
         alt="Popular Menu Image"
       />

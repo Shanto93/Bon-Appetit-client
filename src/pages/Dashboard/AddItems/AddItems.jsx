@@ -127,6 +127,7 @@ const AddItems = () => {
                     <option value="dessert">dessert</option>
                     <option value="drinks">drinks</option>
                     <option value="offered">offered</option>
+                    <option value="popular">popular</option>
                   </select>
                 </motion.div>
 

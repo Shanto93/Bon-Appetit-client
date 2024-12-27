@@ -17,7 +17,7 @@ const UserHome = () => {
     },
   });
 
-  console.log(userData.payments);
+  console.log(userData);
 
   return (
     <div className="min-h-screen">
