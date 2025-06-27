@@ -4,6 +4,16 @@
 
 [Live Preview](https://bistro-boss-a7a0e.web.app/)
 
+## Login Credentials
+
+### User Account
+- **Email:** [normaluser@gmail.com](mailto:normaluser@gmail.com)  
+- **Password:** `user123`
+
+### Admin Account
+- **Email:** [admin123@gmail.com](mailto:admin123@gmail.com)  
+- **Password:** `admin123`
+
 ## Table of Contents
 
 - [Features](#features)
