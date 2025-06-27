@@ -1,4 +1,4 @@
-import { useState } from "react";
+
 import coverPhoto from "../../../assets/shop/banner2.jpg";
 import Cover from "../../shared/Cover/Cover";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
@@ -7,6 +7,7 @@ import useMenu from "../../../hooks/useMenu";
 import OrderTab from "./OrderTab";
 import { Helmet } from "react-helmet-async";
 import { useParams } from "react-router-dom";
+import { useState } from "react";
 
 const Order = () => {
   const categories = ["salad", "pizza", "soup", "dessert", "drinks"];
