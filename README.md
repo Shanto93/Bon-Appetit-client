@@ -1,6 +1,6 @@
-# Bistro Boss
+# Bon Appetit
 
-**Bistro Boss** is a restaurant web application where users can browse the menu, order food, and leave reviews. It features two types of user roles: **normal users** and **admins**, each with their own dashboards and permissions. The application is built with a focus on security and user experience, utilizing **JWT** for secure authentication and offering login options via Google or email/password.
+**Bon Appetit** is a restaurant web application where users can browse the menu, order food, and leave reviews. It features two types of user roles: **normal users** and **admins**, each with their own dashboards and permissions. The application is built with a focus on security and user experience, utilizing **JWT** for secure authentication and offering login options via Google or email/password.
 
 [Live Preview](https://bistro-boss-a7a0e.web.app/)
 
